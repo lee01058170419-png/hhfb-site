@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="HH F&amp;B는 스마트스토어·공동구매·라이브커머스·밴드 셀러를 위한 산지 신선식품 공급사입니다. 홍게·대게·과메기·굴비 등 수산물과 농산물·축산물을 발주서 한 장으로 받아 산지에서 고객에게 바로 출고하고 송장까지 회신합니다.">
+<meta name="keywords" content="HH F&amp;B, 에이치에이치에프앤비, 신선식품 공급, 산지 직송, 위탁 배송, 셀러 공급, 공동구매 공급, 스마트스토어 공급, 수산물 공급, 홍게, 국산대게, 랍스터, 과메기, 굴비, 박대, 피데기, 흑고동, 등갈비, LA갈비, 표고버섯, 울진">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0F3D2E">
+<link rel="canonical" href="https://hhfb.co.kr/">
+<meta property="og:url" content="https://hhfb.co.kr/">
+<meta name="naver-site-verification" content="0a02880c84caa05863a95b43a48329ae18abcdfb">
+<meta name="google-site-verification" content="gJgbaHgkhIZX8_KBSmOBzXxNnsbANI5_81an0cqukiI">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="HH F&amp;B">
+<meta property="og:title" content="HH F&amp;B | 셀러를 위한 산지 신선식품 공급 파트너">
+<meta property="og:description" content="수산물·농산물·축산물을 발주서 한 장으로. 산지에서 고객에게 바로 출고하고 송장까지 회신합니다.">
+<meta property="og:image" content="https://hhfb.co.kr/img/og-2026-11.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<title>HH F&amp;B | 셀러를 위한 산지 신선식품 공급 파트너</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a morning landscape cut like layered paper (ridges, a bay, rolling fields, the sun in the valley), centred under one strong headline; on scroll it gathers into the HH emblem. Chapters change rhythm: three colour cards, a deep-green product band, numbered steps, seller list, warm sunrise footer. */
+:root{
+  --bg:#F4F2EA;         /* morning paper */
+  --bg-2:#E9EDE2;
+  --card:#FFFFFF;
+  --ink:#11241C;
+  --forest:#0F3D2E;     /* brand main */
+  --forest-2:#16503C;
+  --sea:#1F72B8;        /* 수산 */
+  --leaf:#4E9A2A;       /* 농산 */
+  --ember:#D9542C;      /* 축산 */
+  --sun:#F2A33A;
+  --dim:rgba(17,36,28,.68);
+  --faint:rgba(17,36,28,.14);
+  --display:"Hahmlet","Noto Serif KR","AppleMyungjo",serif;
+  --latin:"Fraunces",Georgia,serif;
+  --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --gut:clamp(20px,4.4vw,76px);
+  --ease:cubic-bezier(.7,0,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:400;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-x:hidden;line-height:1.7}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--forest);color:#fff}
+:focus-visible{outline:2px solid var(--sun);outline-offset:4px;border-radius:4px}
+.gut{padding-left:var(--gut);padding-right:var(--gut)}
+.skip{position:fixed;left:16px;top:-60px;z-index:100;background:var(--forest);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px}
+.skip:focus{top:16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.en{font-family:var(--latin);font-style:italic;font-weight:400}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--forest);letter-spacing:.02em}
+.kicker b{font-family:var(--latin);font-style:italic;font-weight:400;font-size:16px;color:var(--sun)}
+.h2{font-family:var(--display);font-weight:600;font-size:clamp(36px,5vw,76px);line-height:1.18;letter-spacing:-.035em;text-wrap:balance}
+.h2 .soft{font-weight:300}
+.lead{font-size:17px;color:var(--dim);max-width:32em;line-height:1.85}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px;transition:background .5s,padding .5s,border-color .5s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(244,242,234,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding-top:12px;padding-bottom:12px;border-bottom-color:var(--faint)}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:600;font-size:19px;color:var(--forest)}
+.brand svg{width:36px;height:36px}
+.nav-r{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;color:var(--ink)}
+.nav-r a:not(.pill){opacity:.75;transition:opacity .3s}
+.nav-r a:not(.pill):hover{opacity:1}
+.pill{display:inline-flex;align-items:center;gap:12px;border-radius:999px;padding:12px 14px 12px 22px;font-size:15px;font-weight:500;background:var(--forest);color:#fff;transition:background .35s,transform .35s var(--ease)}
+.pill i{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-style:normal;font-size:12px;transition:transform .35s var(--ease)}
+.pill:hover{background:var(--forest-2)}
+.pill:hover i{transform:translateX(3px)}
+.pill.ghost{background:rgba(255,255,255,.7);color:var(--forest);border:1px solid rgba(15,61,46,.2)}
+.pill.ghost i{background:rgba(15,61,46,.1)}
+@media (max-width:860px){.nav-r a:not(.pill){display:none}}
+
+/* hero */
+.stage{position:relative;height:300vh}
+.stage-in{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#sky{position:absolute;inset:0;background:linear-gradient(180deg,#B9D6E0 0%,#D5E5E4 30%,#F3E7CF calc(var(--hz,64%) - 6%),#F9D9A6 var(--hz,64%),#F3E7CF 100%)}
+#land,#field{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-copy{will-change:opacity,transform;position:absolute;left:0;right:0;top:clamp(96px,12.5vh,124px);z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--forest);background:rgba(255,255,255,.78);border:1px solid rgba(15,61,46,.12);border-radius:999px;padding:7px 16px 7px 12px;margin-bottom:20px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 4px rgba(242,163,58,.25)}
+.h1{font-family:var(--display);font-weight:600;font-size:clamp(38px,5vw,84px);line-height:1.12;letter-spacing:-.045em;color:var(--forest);text-wrap:balance}
+.h1 .ln{display:block}
+.h1 .soft{font-weight:300;color:var(--ink)}
+.hero-p{font-size:clamp(15px,1.25vw,18px);color:var(--dim);max-width:34em;margin:18px auto 24px;line-height:1.8;font-weight:400}
+.hero-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;pointer-events:auto}
+.hero-copy .badge,.hero-copy .ln,.hero-p,.hero-btns{animation:rise 1.5s var(--ease) both}
+.hero-copy .ln:nth-child(1){animation-delay:.2s}.hero-copy .ln:nth-child(2){animation-delay:.35s}.hero-p{animation-delay:.6s}.hero-btns{animation-delay:.8s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.dissolve{position:absolute;left:0;right:0;bottom:0;height:12%;z-index:2;pointer-events:none;background:linear-gradient(rgba(244,242,234,0),var(--bg));opacity:0;will-change:opacity}
+.hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:#fff;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;text-shadow:0 1px 6px rgba(0,0,0,.25)}
+.hint i{width:1px;height:30px;background:linear-gradient(#fff,transparent);animation:drip 2.4s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.core{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:2;pointer-events:none}
+.core .halo{position:absolute;left:50%;top:50%;width:320%;height:320%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,226,160,1) 0,rgba(255,200,120,.55) 26%,rgba(255,200,120,0) 62%);opacity:0;will-change:opacity}
+.core svg{position:relative;display:block;width:clamp(110px,15vmin,170px);height:clamp(110px,15vmin,170px);opacity:0}
+.core .disc{position:absolute;left:3%;top:3%;width:94%;height:94%;border-radius:50%;box-shadow:0 14px 34px rgba(15,61,46,.3);opacity:0;will-change:opacity}
+.core-cap{position:absolute;left:0;right:0;top:calc(42% + clamp(80px,11vmin,120px));padding:0 20px;text-align:center;z-index:2;opacity:0;pointer-events:none}
+.core-cap .big{font-family:var(--display);font-weight:600;font-size:clamp(30px,4vw,60px);letter-spacing:-.04em;line-height:1.2;color:var(--forest);text-wrap:balance}
+.core-cap p:last-child{color:var(--dim);font-size:16px;margin-top:12px;text-wrap:balance}
+@media (max-width:860px){.hero-copy{top:100px}}
+
+/* chapter shell */
+.chap{position:relative;padding-top:clamp(100px,14vh,170px);padding-bottom:clamp(100px,14vh,170px)}
+.head{display:flex;flex-direction:column;gap:20px;margin-bottom:clamp(48px,7vh,80px);max-width:880px}
+.head.center{align-items:center;text-align:center;margin-left:auto;margin-right:auto}
+
+/* 01 categories: three colour cards */
+.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.cat{position:relative;display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:var(--c);color:#fff;min-height:620px;isolation:isolate;transition:transform .7s var(--ease)}
+.cat:hover{transform:translateY(-8px)}
+.cat .ph{position:relative;height:52%;min-height:300px;overflow:hidden}
+.cat .ph img,.cat .ph video{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.cat .ph img,.cat .ph video{transform:scale(1.12)}
+.cat .ph img,.cat .ph video{-webkit-mask-image:linear-gradient(180deg,#000 48%,rgba(0,0,0,0) 90%);mask-image:linear-gradient(180deg,#000 48%,rgba(0,0,0,0) 90%)}
+.cat .body{flex:1;display:flex;flex-direction:column;padding:6px 30px 30px}
+.cat .no{font-family:var(--latin);font-style:italic;font-size:18px;opacity:.75}
+.cat h3{font-family:var(--display);font-weight:700;font-size:clamp(40px,4vw,64px);letter-spacing:-.04em;line-height:1.05;margin:6px 0 4px}
+.cat .en{font-size:20px;opacity:.85}
+.cat p{font-size:15.5px;line-height:1.75;opacity:.92;margin:18px 0 22px;max-width:28em}
+.cat .tags{margin-top:auto;display:flex;flex-wrap:wrap;gap:7px}
+.cat .tags span{font-size:13.5px;font-weight:500;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3)}
+@media (max-width:980px){.cats{grid-template-columns:1fr}.cat{min-height:0}.cat .ph{height:300px}}
+
+/* 02 collection: deep green band */
+.dark{background:var(--forest);color:#F4F2EA}
+.dark .kicker{color:#CFE3B8}
+.dark .lead{color:rgba(244,242,234,.72)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.filters button{border:1px solid rgba(244,242,234,.25);border-radius:999px;padding:10px 18px;font-size:15px;font-weight:500;color:rgba(244,242,234,.85);transition:all .3s;display:inline-flex;gap:9px;align-items:center}
+.filters button i{width:8px;height:8px;border-radius:50%;background:var(--c,#F4F2EA)}
+.filters button small{font-family:var(--latin);font-style:italic;font-size:14px;opacity:.75}
+.filters button:hover{border-color:rgba(244,242,234,.6);color:#fff}
+.filters button[aria-pressed="true"]{background:#F4F2EA;color:var(--forest);border-color:#F4F2EA}
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:36px 18px;margin-top:48px}.grid>.card{width:calc((100% - 5*18px)/6)}
+@media (max-width:1200px){.grid>.card{width:calc((100% - 3*18px)/4)}}
+@media (max-width:900px){.grid>.card{width:calc((100% - 2*18px)/3)}}
+@media (max-width:640px){.grid{gap:28px 12px}.grid>.card{width:calc((100% - 12px)/2)}}
+.card{display:flex;flex-direction:column;gap:12px}
+.card[hidden]{display:none}
+.card .im{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:16px;background:#0B2E22}
+.card .im img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.card:hover .im img{transform:scale(1.07)}
+.card .im em{position:absolute;left:10px;top:10px;font-style:normal;font-size:12.5px;font-weight:500;padding:5px 11px;border-radius:999px;background:var(--c);color:#fff}
+.card h3{font-family:var(--display);font-weight:600;font-size:clamp(20px,1.7vw,25px);letter-spacing:-.03em;line-height:1.25}
+.card .en{color:rgba(244,242,234,.6);font-size:14.5px}
+.note{margin-top:56px;text-align:center;color:rgba(244,242,234,.7);font-size:15px}
+
+/* 03 flow: big numbered steps */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;list-style:none;counter-reset:s}
+.step{position:relative;background:var(--card);border-radius:20px;padding:30px 26px 34px;border:1px solid var(--faint);overflow:hidden}
+.step::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--c)}
+.step .n{font-family:var(--display);font-weight:700;font-size:64px;line-height:1;color:var(--c);letter-spacing:-.04em}
+.step h3{font-family:var(--display);font-weight:600;font-size:clamp(22px,1.9vw,28px);letter-spacing:-.03em;margin:22px 0 10px}
+.step p{color:var(--dim);font-size:15.5px;line-height:1.75}
+.step .arrow{position:absolute;right:22px;top:30px;color:var(--faint);font-size:22px}
+@media (max-width:980px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* 04 sellers */
+.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,100px);align-items:start}
+.split .head{position:sticky;top:120px;margin-bottom:0}
+.split .h2{font-size:clamp(34px,3.8vw,60px)}
+.rows{border-top:2px solid var(--forest)}
+.row{display:grid;grid-template-columns:56px minmax(0,1fr) 36px;gap:6px 18px;align-items:center;padding:26px 0;border-bottom:1px solid var(--faint);transition:padding .5s var(--ease),background .4s}
+.row:hover{padding-left:12px;background:linear-gradient(90deg,rgba(78,154,42,.09),rgba(78,154,42,0))}
+.row .n{font-family:var(--latin);font-style:italic;color:var(--sun);font-size:18px}
+.row h3{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.2vw,32px);letter-spacing:-.03em;line-height:1.3}
+.row p{grid-column:2;color:var(--dim);font-size:15px}
+.row .arr{grid-row:1;grid-column:3;justify-self:end;width:34px;height:34px;border-radius:50%;border:1px solid var(--faint);display:grid;place-items:center;color:var(--forest);transition:background .3s,color .3s,transform .5s var(--ease)}
+.row:hover .arr{background:var(--forest);color:#fff;transform:translateX(4px)}
+@media (max-width:860px){.split{grid-template-columns:1fr}.split .head{position:static;margin-bottom:24px}}
+
+/* 05 contact */
+.contact{position:relative;overflow:hidden;padding-top:clamp(110px,15vh,170px);background:linear-gradient(180deg,var(--bg) 0%,#F6E6C8 75%,#F7D9A5 100%)}
+.contact .sunup{position:absolute;left:50%;bottom:-34vw;width:62vw;height:62vw;transform:translateX(-50%);border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,#FFD983 0,#F7B65A 34%,rgba(247,182,90,.0) 70%);opacity:.75}
+.c-title{font-family:var(--display);font-weight:700;font-size:clamp(56px,9.5vw,160px);line-height:1.04;letter-spacing:-.055em;color:var(--forest);margin:22px 0 48px;position:relative}
+.c-title .soft{font-weight:300;color:var(--ink)}
+.c-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;padding-bottom:clamp(80px,13vh,140px)}
+.c-list{display:flex;flex-direction:column;background:rgba(255,255,255,.62);border-radius:20px;padding:8px 26px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.7)}
+.c-list div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--faint);align-items:baseline}
+.c-list div:last-child{border-bottom:0}
+.c-list .k{font-family:var(--latin);font-style:italic;color:var(--dim);font-size:16px}
+.c-list a{font-size:clamp(18px,1.6vw,22px);font-weight:500;transition:color .3s}
+.c-list a:hover{color:var(--sea)}
+.foot{position:relative;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;border-top:1px solid rgba(17,36,28,.18);padding-top:26px;padding-bottom:30px;color:var(--dim);font-size:13px;line-height:1.9}
+@media (max-width:860px){.c-grid{grid-template-columns:1fr}}
+
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.rv [data-rv]{opacity:0;transform:translate3d(0,46px,0);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.3s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv [data-rv].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .stage{height:100vh;height:100svh}
+  .core,.core-cap{display:none}
+  .hint i,.hero-copy .badge,.hero-copy .ln,.hero-p,.hero-btns{animation:none}
+  .cat,.cat .ph img,.card .im img,.row,.row .arr{transition:none}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"HH F&B","alternateName":"에이치에이치에프앤비",
+ "description":"셀러를 위한 산지 신선식품 공급 파트너. 수산물·농산물·축산물을 산지에서 고객에게 바로 출고합니다.",
+ "url":"https://hhfb.co.kr/","logo":"https://hhfb.co.kr/img/apple-touch-icon.png","telephone":"+82-10-2265-8811","email":"hhfb0910@naver.com","taxID":"127-86-63959",
+ "address":{"@type":"PostalAddress","streetAddress":"북면 울진북로 1693-8","addressLocality":"울진군","addressRegion":"경상북도","addressCountry":"KR"},
+ "sameAs":["https://www.instagram.com/hhfb0910/"]}
+</script>
+</head>
+<body>
+<a href="#categories" class="skip">본문으로 건너뛰기</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="hh" viewBox="0 0 400 400">
+    <circle cx="200" cy="200" r="190" fill="#0F3D2E"/>
+    <circle cx="200" cy="200" r="159.60" fill="#F6F3EA"/>
+    <path d="M166.3928 245.6V157.82H191.222V245.6ZM107.7056 245.6V157.82H132.5348V245.6ZM130.7792 211.3658V190.8002H168.1484V211.3658ZM267.4652 245.6V157.82H292.2944V245.6ZM208.778 245.6V157.82H233.6072V245.6ZM231.8516 211.3658V190.8002H269.2208V211.3658Z" fill="#0F3D2E"/>
+    <path d="M200.00,160.33 C161.63,141.14 174.42,98.51 223.45,100.64 C231.98,132.61 214.92,156.06 200.00,160.33Z" fill="#7CC242"/>
+    <path d="M200.00,160.33 Q204.26,136.88 219.19,111.30" fill="none" stroke="#F6F3EA" stroke-width="3.62" stroke-linecap="round"/>
+    <rect x="139.44" y="268.40" width="35.62" height="9.98" rx="4.99" fill="#7CC242"/>
+    <rect x="182.19" y="268.40" width="35.62" height="9.98" rx="4.99" fill="#1F72B8"/>
+    <rect x="224.94" y="268.40" width="35.62" height="9.98" rx="4.99" fill="#E2532D"/>
+  </symbol>
+</svg>
+
+<header class="nav gut" id="nav">
+  <a href="#top" class="brand" aria-label="HH F&amp;B 처음으로"><svg aria-hidden="true"><use href="#hh"/></svg>HH F&amp;B</a>
+  <nav class="nav-r" aria-label="주요 메뉴">
+    <a href="#categories">취급 분야</a>
+    <a href="#collection">품목</a>
+    <a href="#flow">출고 방식</a>
+    <a href="#sellers">셀러</a>
+    <a href="#contact" class="pill">거래 문의 <i aria-hidden="true">→</i></a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="stage" id="stage" aria-label="HH F&amp;B 소개">
+    <div class="stage-in">
+      <div id="sky" aria-hidden="true"></div>
+      <canvas id="land" aria-hidden="true"></canvas>
+      <canvas id="field" aria-hidden="true"></canvas>
+
+      <div class="hero-copy gut" id="heroCopy">
+        <span class="badge"><i></i>셀러를 위한 산지 신선식품 공급</span>
+        <h1 class="h1"><span class="ln soft">산과 들, 바다가 키운 것을</span><span class="ln">셀러의 고객 곁으로</span></h1>
+        <p class="hero-p">동해의 홍게부터 햇볕에 말린 과메기, 등갈비와 표고버섯까지. 여러 산지를 한 번의 발주로 묶어 산지에서 고객에게 바로 출고합니다.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="pill">거래 문의하기 <i aria-hidden="true">→</i></a>
+          <a href="#collection" class="pill ghost">품목 보기 <i aria-hidden="true">↓</i></a>
+        </div>
+      </div>
+
+      <div class="core" aria-hidden="true"><span class="halo" id="halo"></span><span class="disc" id="disc"></span><svg id="coreLogo"><use href="#hh"/></svg></div>
+      <div class="core-cap" id="coreCap">
+        <p class="big">산지는 많아도,<br>파트너는 하나.</p>
+        <p>수산물 · 농산물 · 축산물, 발주부터 송장까지 HH F&amp;B가 맡습니다.</p>
+      </div>
+      <div class="dissolve" id="dissolve" aria-hidden="true"></div>
+      <div class="hint" id="hint"><span>Scroll</span><i></i></div>
+    </div>
+  </section>
+
+  <!-- 01 CATEGORIES -->
+  <section class="chap gut" id="categories">
+    <div data-rv class="head">
+      <span class="kicker"><b>01</b>취급 분야</span>
+      <h2 class="h2">산지에서 고른 상품을<br><span class="soft">셀러께 그대로 보냅니다.</span></h2>
+      <p class="lead">HH F&amp;B는 산지와 셀러 사이에 있습니다. 좋은 상품을 셀러가 가장 쉽게 팔 수 있도록, 발주부터 출고와 송장까지 보이지 않는 일을 맡습니다.</p>
+    </div>
+    <div class="cats">
+      <article class="cat" data-rv style="--c:var(--sea)">
+        <div class="ph"><video src="img/v-sea.mp4" poster="img/c-sea.jpg" autoplay muted loop playsinline preload="metadata" aria-label="산지 위판장에서 대게를 바구니에 담는 모습"></video></div>
+        <div class="body">
+          <span class="no">01</span>
+          <h3>수산물</h3><span class="en">Seafood</span>
+          <p>동해에서 올라온 홍게와 대게, 바닷바람과 햇볕에 말린 과메기와 굴비까지. 산지에서 손질과 포장을 마치고 바로 출고합니다.</p>
+          <div class="tags"><span>홍게</span><span>국산대게</span><span>랍스터</span><span>흑고동</span><span>과메기</span><span>피데기</span><span>굴비</span><span>박대</span></div>
+        </div>
+      </article>
+      <article class="cat" data-rv style="--c:var(--leaf);--d:.12s">
+        <div class="ph"><video src="img/v-farm.mp4?v=2" poster="img/c-farm.jpg" autoplay muted loop playsinline preload="metadata" aria-label="울진 재배사에서 자라는 표고버섯"></video></div>
+        <div class="body">
+          <span class="no">02</span>
+          <h3>농산물</h3><span class="en">Produce</span>
+          <p>재배사에서 키운 표고버섯을 산지에서 바로 보냅니다. 농산 품목은 산지와 함께 하나씩 넓혀가고 있습니다.</p>
+          <div class="tags"><span>표고버섯</span></div>
+        </div>
+      </article>
+      <article class="cat" data-rv style="--c:var(--ember);--d:.24s">
+        <div class="ph"><video src="img/v-meat.mp4?v=3" poster="img/c-meat.jpg?v=3" autoplay muted loop playsinline preload="metadata" aria-label="손질한 등갈비와 구운 등갈비, LA갈비"></video></div>
+        <div class="body">
+          <span class="no">03</span>
+          <h3>축산물</h3><span class="en">Meat</span>
+          <p>지금은 등갈비와 LA갈비를 공급하고 있고, 축산 품목을 계속 늘려가고 있습니다.</p>
+          <div class="tags"><span>등갈비</span><span>LA갈비</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 02 COLLECTION -->
+  <section class="chap dark gut" id="collection">
+    <div data-rv class="head center">
+      <span class="kicker"><b>02</b>품목</span>
+      <h2 class="h2">지금 셀러분들께<br><span class="soft">공급하는 품목</span></h2>
+      <div class="filters" role="group" aria-label="품목 분류" id="filters"><button type="button" id="f0" aria-pressed="true" data-k="">전체 <small>11</small></button><button type="button" id="f1" aria-pressed="false" data-k="수산" style="--c:var(--sea)"><i></i>수산물 <small>8</small></button><button type="button" id="f2" aria-pressed="false" data-k="농산" style="--c:var(--leaf)"><i></i>농산물 <small>1</small></button><button type="button" id="f3" aria-pressed="false" data-k="축산" style="--c:var(--ember)"><i></i>축산물 <small>2</small></button></div>
+    </div>
+    <p class="sr" aria-live="polite" id="count"></p>
+    <div class="grid" id="grid">
+      <article class="card" data-rv style="--d:0.00s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-hongge.jpg?v=2" alt="홍게 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>홍게</h3><span class="en">Red Snow Crab</span></div></article>
+      <article class="card" data-rv style="--d:0.06s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-daege.jpg?v=3" alt="국산 대게 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>국산대게</h3><span class="en">Korean Snow Crab</span></div></article>
+      <article class="card" data-rv style="--d:0.12s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-lobster.jpg?v=3" alt="랍스터 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>랍스터</h3><span class="en">Lobster</span></div></article>
+      <article class="card" data-rv style="--d:0.18s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-heukgodong.jpg?v=2" alt="흑고동 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>흑고동</h3><span class="en">Black Whelk</span></div></article>
+      <article class="card" data-rv style="--d:0.24s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-gwamegi.jpg?v=3" alt="과메기 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>과메기</h3><span class="en">Gwamegi</span></div></article>
+      <article class="card" data-rv style="--d:0.30s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-pidegi.jpg" alt="피데기 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>피데기</h3><span class="en">Half-dried Squid</span></div></article>
+      <article class="card" data-rv style="--d:0.00s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-gulbi.jpg?v=3" alt="굴비 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>굴비</h3><span class="en">Yellow Croaker</span></div></article>
+      <article class="card" data-rv style="--d:0.06s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-bakdae.jpg" alt="박대 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>박대</h3><span class="en">Tonguefish</span></div></article>
+      <article class="card" data-rv style="--d:0.12s;--c:var(--leaf)" data-k="농산"><div class="im"><img src="img/p-pyogo.jpg?v=2" alt="표고버섯 (농산물)" loading="lazy" width="400" height="500"><em>농산물</em></div><div><h3>표고버섯</h3><span class="en">Shiitake</span></div></article>
+      <article class="card" data-rv style="--d:0.18s;--c:var(--ember)" data-k="축산"><div class="im"><img src="img/p-ribs.jpg?v=2" alt="등갈비 (축산물)" loading="lazy" width="400" height="500"><em>축산물</em></div><div><h3>등갈비</h3><span class="en">Pork Back Ribs</span></div></article>
+      <article class="card" data-rv style="--d:0.24s;--c:var(--ember)" data-k="축산"><div class="im"><img src="img/p-lagalbi.jpg?v=3" alt="LA갈비 (축산물)" loading="lazy" width="400" height="500"><em>축산물</em></div><div><h3>LA갈비</h3><span class="en">LA-style Short Ribs</span></div></article>
+    </div>
+    <p class="note" data-rv>농산·축산 품목은 계속 늘려가고 있습니다. 찾으시는 품목이 있으면 편하게 물어봐 주세요.</p>
+  </section>
+
+  <!-- 03 FLOW -->
+  <section class="chap gut" id="flow">
+    <div data-rv class="head">
+      <span class="kicker"><b>03</b>출고 방식</span>
+      <h2 class="h2">발주서 한 장이면<br><span class="soft">산지에서 바로 갑니다.</span></h2>
+      <p class="lead">처음 거래하시는 셀러분도 어렵지 않게. 네 단계면 충분합니다.</p>
+    </div>
+    <ol class="steps">
+      <li class="step" data-rv style="--d:0s;--c:var(--sea)"><span class="n">01</span><span class="arrow" aria-hidden="true">→</span><h3>발주서 전송</h3><p>셀러가 주문 내역을 엑셀 발주서로 보냅니다.</p></li>
+      <li class="step" data-rv style="--d:.1s;--c:var(--leaf)"><span class="n">02</span><span class="arrow" aria-hidden="true">→</span><h3>품목별 발주</h3><p>HH F&amp;B가 품목별로 정리해 산지 업체에 발주합니다.</p></li>
+      <li class="step" data-rv style="--d:.2s;--c:var(--sun)"><span class="n">03</span><span class="arrow" aria-hidden="true">→</span><h3>산지 출고</h3><p>산지에서 고객에게 바로 포장해 출고합니다.</p></li>
+      <li class="step" data-rv style="--d:.3s;--c:var(--ember)"><span class="n">04</span><h3>송장 회신</h3><p>송장번호를 셀러 발주서에 적어 돌려드립니다.</p></li>
+    </ol>
+  </section>
+
+  <!-- 04 SELLERS -->
+  <section class="chap gut" id="sellers" style="background:var(--bg-2)">
+    <div class="split">
+      <div data-rv class="head">
+        <span class="kicker"><b>04</b>셀러</span>
+        <h2 class="h2">어떤 방식으로 파시든<br><span class="soft">맞춰서 공급합니다.</span></h2>
+        <p class="lead">판매 방식에 맞춰 공급 조건을 함께 상의합니다.</p>
+        <div><a href="#contact" class="pill">공급 조건 문의 <i aria-hidden="true">→</i></a></div>
+      </div>
+      <div class="rows">
+        <a href="#contact" class="row" data-rv><span class="n">01</span><h3>오픈마켓 · 스마트스토어</h3><span class="arr" aria-hidden="true">→</span><p>온라인 쇼핑몰을 운영하는 셀러</p></a>
+        <a href="#contact" class="row" data-rv><span class="n">02</span><h3>공동구매 · 인플루언서</h3><span class="arr" aria-hidden="true">→</span><p>SNS로 공구를 진행하는 셀러</p></a>
+        <a href="#contact" class="row" data-rv><span class="n">03</span><h3>라이브커머스</h3><span class="arr" aria-hidden="true">→</span><p>방송으로 판매하는 셀러</p></a>
+        <a href="#contact" class="row" data-rv><span class="n">04</span><h3>자사몰 · 유통업체</h3><span class="arr" aria-hidden="true">→</span><p>신선식품 상품군을 늘리려는 곳</p></a>
+        <a href="#contact" class="row" data-rv><span class="n">05</span><h3>밴드사</h3><span class="arr" aria-hidden="true">→</span><p>밴드로 공동구매를 운영하는 곳</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 CONTACT -->
+  <section class="contact gut" id="contact">
+    <div class="sunup" aria-hidden="true"></div>
+    <span class="kicker" style="position:relative"><b>05</b>거래 문의</span>
+    <h2 class="c-title" data-rv>함께,<br><span class="soft">키워갑니다.</span></h2>
+    <div class="c-grid" data-rv>
+      <div>
+        <p class="lead" style="margin-bottom:28px;color:var(--ink)">취급 품목, 공급 조건, 거래 방법이 궁금하시면 편하게 연락 주세요. 상품 소개서를 보내드립니다.</p>
+        <a class="pill" href="https://www.instagram.com/hhfb0910/" target="_blank" rel="noopener">인스타그램 DM으로 문의 <i aria-hidden="true">↗</i></a>
+      </div>
+      <div class="c-list">
+        <div><span class="k">Tel</span><a href="tel:01022658811">010-2265-8811</a></div>
+        <div><span class="k">Email</span><a href="mailto:hhfb0910@naver.com">hhfb0910@naver.com</a></div>
+        <div><span class="k">Instagram</span><a href="https://www.instagram.com/hhfb0910/" target="_blank" rel="noopener">@hhfb0910</a></div>
+      </div>
+    </div>
+    <footer class="foot">
+      <span>상호 HH F&amp;B · 사업자등록번호 127-86-63959<br>사업장 소재지 경상북도 울진군 북면 울진북로 1693-8 · TEL 010-2265-8811 · hhfb0910@naver.com</span>
+      <span>© 2026 HH F&amp;B. All rights reserved.</span>
+    </footer>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* ---------- collection filter ---------- */
+(function(){
+var g=document.getElementById('grid'),f=document.getElementById('filters');
+f.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  [].forEach.call(f.children,function(x){x.setAttribute('aria-pressed',x===b)});
+  var k=b.getAttribute('data-k'),shown=0;
+  [].forEach.call(g.children,function(c){c.hidden=!!k&&c.getAttribute('data-k')!==k;if(!c.hidden)shown++});
+  document.getElementById('count').textContent=(k?k+'물':'전체')+' 품목 '+shown+'개';
+});
+})();
+
+/* ---------- smooth scroll, reveals, nav ---------- */
+(function(){
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,root=document.documentElement;
+var nav=document.getElementById('nav'),stage=document.getElementById('stage'),solid=null;
+// smooth, weighted scrolling (wheel/trackpad); touch keeps the phone's native momentum
+if(!reduce&&window.Lenis){
+  var lenis=new Lenis({duration:1.25,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});
+  window.__lenis=lenis;
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href');
+    var el=id==='#top'?0:document.querySelector(id);if(el===null)return;e.preventDefault();lenis.scrollTo(el,{offset:id==='#top'?0:-10,duration:1.6});});
+}
+// sections rise in as they arrive
+var items=[].slice.call(document.querySelectorAll('[data-rv]'));
+if(!reduce&&'IntersectionObserver' in window){
+  items.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*.95)el.classList.add('in')});
+  root.classList.add('rv');
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  items.forEach(function(el){if(!el.classList.contains('in'))io.observe(el)});
+}
+// gentle parallax on the category photos
+var phs=[].slice.call(document.querySelectorAll('.cat .ph img,.cat .ph video'));
+window.__scrollFx=function(){
+  var sv=scrollY>stage.offsetHeight-innerHeight*.6;if(sv!==solid){solid=sv;nav.classList.toggle('solid',sv)}
+  if(reduce)return;
+  for(var i=0;i<phs.length;i++){var r=phs[i].parentNode.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)continue;
+    var k=(r.top+r.height/2-innerHeight/2)/innerHeight;phs[i].style.transform='translate3d(0,'+(k*-28).toFixed(1)+'px,0) scale(1.12)';}
+};
+window.__scrollFx();
+})();
+
+/* ---------- hero landscape ---------- */
+(function(){
+var land=document.getElementById('land'),cx=land.getContext('2d');
+var cv=document.getElementById('field'),sky=document.getElementById('sky');
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var stage=document.getElementById('stage'),heroCopy=document.getElementById('heroCopy');
+var coreLogo=document.getElementById('coreLogo'),coreCap=document.getElementById('coreCap'),hint=document.getElementById('hint');
+var prog=0,target=0,mouse=[9,9],mouseT=[9,9],G={};
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function sm(a,b,x){x=clamp((x-a)/(b-a),0,1);return x*x*(3-2*x)}
+function onScroll(){var r=stage.getBoundingClientRect(),span=stage.offsetHeight-innerHeight;target=span>0?clamp(-r.top/span,0,1):0}
+addEventListener('scroll',onScroll,{passive:true});
+addEventListener('pointermove',function(e){mouseT=[e.clientX/innerWidth*2-1,-(e.clientY/innerHeight*2-1)]},{passive:true});
+document.addEventListener('pointerleave',function(){mouseT=[9,9]});
+
+/* shared geometry (x,y in -1..1, y up) */
+function setGeo(small){
+  G={small:small,hz:small?-.34:-.33,sx:0,SR:small?.1:.12,MH:small?.75:1};
+  G.sy=G.hz+.015;
+}
+function ridge(x,seed,h){var v=sm(0,.8,Math.abs(x-G.sx));
+  return G.hz+.006+h*G.MH*(.14+.86*v)*(.58*Math.pow(Math.abs(Math.sin(x*1.15+seed)),1.3)+.3*Math.pow(Math.abs(Math.sin(x*2.9+seed*2)),2)+.12*(Math.sin(x*7.5+seed*3)*.5+.5));}
+function shore(x){return G.hz-(G.small?.11:.12)+.025*Math.sin(x*1.6+.8)+.012*Math.sin(x*4.2)}
+function hill(i,x,t){ // rolling field bands, back (i=0) to front (i=3)
+  var base=[0,.13,.3,.52][i],amp=[.025,.04,.06,.08][i],f=[1.7,1.3,1.05,.8][i],ph=[.4,2.1,4.0,5.5][i];
+  return shore(x)-.012-base*(1+G.hz)+amp*Math.sin(x*f*3.1+ph)+amp*.4*Math.sin(x*f*7.3+ph*2);
+}
+var RIDGES=[[.27,1.7,'#A8C4C0',.5],[.2,3.9,'#6F9E88',.75],[.13,6.1,'#2F6B50',1]];
+var HILLS=['#9CC25B','#C9B35A','#5E9A3A','#2F6E37'];
+
+var _c={};function css(el,k,v){var id=el.id+k;if(_c[id]===v)return;_c[id]=v;el.style[k]=v}
+var halo=document.getElementById('halo'),disc=document.getElementById('disc'),dissolve=document.getElementById('dissolve');
+function overlay(p){
+  var a=1-sm(.04,.28,p);
+  css(heroCopy,'opacity',a.toFixed(3));css(heroCopy,'transform','translate3d(0,'+(-40*(1-a)).toFixed(1)+'px,0)');
+  css(heroCopy,'visibility',a<.01?'hidden':'visible');
+  css(hint,'opacity',(1-sm(0,.1,p)).toFixed(3));
+  var c=sm(.62,.88,p);
+  css(coreLogo,'opacity',c.toFixed(3));css(coreLogo,'transform','scale('+(.55+.45*c).toFixed(3)+')');
+  css(halo,'opacity',sm(.45,.85,p).toFixed(3));css(disc,'opacity',c.toFixed(3));
+  var k=sm(.72,.95,p);css(coreCap,'opacity',k.toFixed(3));css(coreCap,'transform','translate3d(0,'+(18*(1-k)).toFixed(1)+'px,0)');
+  css(dissolve,'opacity',sm(.86,1,p).toFixed(3));
+}
+
+/* ---- painted layers (2D) ---- */
+var W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),ldpr=Math.min(devicePixelRatio||1,1.5);
+function X(x){return (x+1)/2*W}
+function Y(y){return (1-y)/2*H}
+function sizeLand(){W=Math.round(land.clientWidth*ldpr);H=Math.round(land.clientHeight*ldpr);land.width=W;land.height=H;sky.style.setProperty('--hz',((1-G.hz)/2*100)+'%')}
+function paint(t,u,lift,px,py,e){
+  cx.clearRect(0,0,W,H);
+  var step=G.small?2/90:2/140,x,i,SHR=.43*e,SHS=.5*e;
+  // sun: rises from the valley, then climbs to the centre and becomes the emblem
+  var S=G.cur,ga=.45+.55*lift;
+  var gw=cx.createRadialGradient(X(S.x),Y(S.y),0,X(S.x),Y(S.y),Math.max(W,H)*.42);
+  gw.addColorStop(0,'rgba(255,236,190,'+(.95*ga)+')');gw.addColorStop(.22,'rgba(255,214,140,'+(.5*ga)+')');gw.addColorStop(1,'rgba(255,214,140,0)');
+  cx.fillStyle=gw;cx.fillRect(0,0,W,H);
+  cx.save();if(e<.02){cx.beginPath();cx.rect(0,0,W,Y(G.hz));cx.clip();}
+  var g=cx.createRadialGradient(X(S.x),Y(S.y),0,X(S.x),Y(S.y),S.r/2*H);
+  g.addColorStop(0,'#FFF4D6');g.addColorStop(.55,'#FFD27A');g.addColorStop(1,'#F6A445');
+  cx.fillStyle=g;cx.beginPath();cx.arc(X(S.x),Y(S.y),S.r/2*H,0,6.2832);cx.fill();cx.restore();
+  // ridges, far to near
+  RIDGES.forEach(function(R,j){
+    var off=px*.02*(j*.5+.2),voff=py*.008*(j*.5+.2),rev=clamp(u*1.5-j*.15,0,1);
+    cx.globalAlpha=rev;cx.fillStyle=R[2];cx.beginPath();cx.moveTo(X(-1.1),Y(G.hz-.2-SHR));
+    for(x=-1.1;x<=1.1+step;x+=step)cx.lineTo(X(x),Y(ridge(x-off,R[1],R[0])+voff+(1-rev)*-.08-SHR));
+    cx.lineTo(X(1.1),Y(G.hz-.2-SHR));cx.closePath();cx.fill();
+  });
+  cx.globalAlpha=1;
+  // bay
+  var top=G.hz-SHS,sea=cx.createLinearGradient(0,Y(top),0,Y(top-.14));
+  sea.addColorStop(0,'#BFD9E6');sea.addColorStop(.35,'#7FB3D8');sea.addColorStop(1,'#2F77B8');
+  cx.fillStyle=sea;cx.globalAlpha=clamp(u*1.4,0,1);cx.beginPath();cx.moveTo(X(-1.1),Y(top));
+  cx.lineTo(X(1.1),Y(top));for(x=1.1;x>=-1.1-step;x-=step)cx.lineTo(X(x),Y(shore(x)-.14-SHS));cx.closePath();cx.fill();
+  // sun path on the water (fades as the sun leaves the horizon)
+  var sw=(G.SR*.9)/2*H,ref=(.25+.6*lift)*(1-sm(0,.5,e));
+  for(i=0;i<26;i++){var yy=G.hz-.006-i/25*(G.hz-shore(0)-.01)-SHS,wd=sw*(.35+i/25*1.3)*(.6+.4*Math.sin(t*1.7+i*1.3));
+    cx.globalAlpha=ref*(1-i/30)*clamp(u*1.4,0,1);cx.fillStyle=i%2?'#FFE3A3':'#FFF3D2';
+    cx.fillRect(X(G.sx)-wd/2+Math.sin(t*.9+i)*sw*.15,Y(yy),wd,Math.max(1,H*.0022));}
+  // wave glints
+  cx.globalAlpha=.55*clamp(u*1.4,0,1);cx.strokeStyle='#F4FAFF';cx.lineWidth=Math.max(1,ldpr);
+  for(i=0;i<40;i++){var s=(i*0.618)%1,wy=G.hz-.01-Math.pow(s,1.3)*(G.hz-shore(0)-.02)-SHS,wx=((i*0.37+t*.012*(1+s))%2.2)-1.1,len=.02+.05*s;
+    cx.beginPath();cx.moveTo(X(wx),Y(wy));cx.lineTo(X(wx+len),Y(wy));cx.stroke();}
+  // fields
+  HILLS.forEach(function(col,j){
+    var off=px*.012*(j+1),rev=clamp(u*1.5-.2-j*.1,0,1),sh=(.55+.07*j)*e;
+    cx.globalAlpha=rev;cx.fillStyle=col;cx.beginPath();cx.moveTo(X(-1.1),Y(-1.05-sh));
+    for(x=-1.1;x<=1.1+step;x+=step)cx.lineTo(X(x),Y(hill(j,x-off,t)+(1-rev)*-.1-sh));
+    cx.lineTo(X(1.1),Y(-1.05-sh));cx.closePath();cx.fill();
+    cx.strokeStyle=j%2?'rgba(255,248,220,.28)':'rgba(20,60,30,.18)';cx.lineWidth=Math.max(1,ldpr*(1+j*.6));
+    var rows=4+j*2;
+    for(var k=1;k<=rows;k++){var d=k/(rows+1),depth=[.13,.17,.22,.5][j];
+      cx.beginPath();
+      for(x=-1.1;x<=1.1+step;x+=step*3){var gust=Math.pow(Math.sin(x*2.2-t*1.1+j)*.5+.5,3);
+        var yy2=hill(j,x-off,t)-d*depth*(1+G.hz)+gust*.006*(j+1)-sh;
+        if(x<=-1.1+1e-6)cx.moveTo(X(x),Y(yy2));else cx.lineTo(X(x),Y(yy2));}
+      cx.stroke();}
+  });
+  cx.globalAlpha=1;
+}
+
+/* ---- particles (WebGL): sparkle, mist, pollen, and the gather ---- */
+var gl=cv.getContext('webgl',{antialias:false,alpha:true,premultipliedAlpha:true});
+function build(asp){
+  var out=[],R=Math.random,k=G.small?.5:1,i,x,y;
+  function put(x,y,L,col,al,sz){out.push(x,y,L,R(),sz,col[0],col[1],col[2],al)}
+  // ridge dust (texture on the painted ridges; also feeds the gather)
+  RIDGES.forEach(function(Rg,j){for(i=0;i<5000*k;i++){x=-1.1+R()*2.2;var top=ridge(x,Rg[1],Rg[0]);y=top-R()*.08;if(y<G.hz)continue;
+    put(x,y,1+j,[1,1,1],.06+R()*.1,1.3);}});
+  // sea glitter
+  for(i=0;i<6000*k;i++){x=-1.1+R()*2.2;y=G.hz-R()*(G.hz-shore(x)-.02);var near=Math.abs(x-G.sx)<.12+R()*.1;
+    put(x,y,5,near?[1,.93,.7]:[.95,.98,1],near?.75:.35,1.4+R());}
+  // field speckle
+  for(i=0;i<9000*k;i++){x=-1.1+R()*2.2;y=-1.05+R()*(shore(x)+1.03);put(x,y,4,R()<.5?[1,.97,.8]:[.2,.45,.2],.16+R()*.18,1.3+R()*1.6);}
+  // mist
+  for(i=0;i<(G.small?500:1200);i++){x=-1.1+R()*2.2;y=G.hz+.02+Math.pow(R(),1.5)*.18*G.MH;put(x,y,7,[1,1,1],.07+R()*.08,6+R()*8);}
+  // pollen
+  for(i=0;i<(G.small?90:200);i++){x=-1.1+R()*2.2;y=-1+R()*(shore(x)+1)*.85;put(x,y,8,[1,.9,.55],.8,2.2+R()*1.6);}
+  return new Float32Array(out);
+}
+var VS=[
+'attribute vec4 a;attribute float sz;attribute vec4 c;',
+'uniform float t,p,asp,pr,hz,u,e,sr;uniform vec2 m,mp,sc;',
+'varying vec3 col;varying float al;',
+'void main(){',
+'  vec2 pos=a.xy;float L=a.z,r=a.w,alpha=c.a;',
+'  if(L<3.5){ float d=(L-1.)/2.; pos.x+=mp.x*.02*(d*.5+.2)*(-1.); alpha*=(.6+.4*sin(t*.6+r*30.))*smoothstep(.2,1.,u); }',
+'  else if(L<4.5){ alpha*=(.5+.5*sin(t*1.4+r*40.))*smoothstep(.3,1.,u); }',
+'  else if(L<5.5){ alpha*=pow(abs(sin(t*1.8+r*60.)),3.)*smoothstep(.2,1.,u); pos.x+=sin(t*.5+r*9.)*.004; }',
+'  else if(L<7.5){ pos.x=mod(a.x+1.1+t*.014*(.4+r)+mp.x*.03,2.2)-1.1; pos.y+=sin(t*.35+r*6.)*.01; alpha*=(.55+.45*sin(t*.5+r*9.))*smoothstep(.3,1.,u); }',
+'  else { float life=fract(t*.05*(.5+r)+r*7.); pos.y+=life*.3; pos.x+=sin(t*.9+r*10.)*.02+mp.x*.01; alpha*=sin(life*3.1416)*(.5+.5*sin(t*3.+r*30.))*smoothstep(.5,1.,u); }',
+'  pos.y-=e*(L<3.5?.43:(L<4.5?.65:(L<6.5?.5:(L<7.5?.43:.65))));',
+'  if(m.x<2.){ vec2 d=pos-m; d.x*=asp; float w=1.-smoothstep(0.,.18,length(d)); pos.y+=w*w*.02; alpha+=w*.4; }',
+'  float k=smoothstep(.15+r*.35,.5+r*.4,p)*step(.4,fract(r*3.7));',
+'  float hsh=fract(sin(dot(a.xy,vec2(12.9898,78.233)))*43758.5453);',
+'  float ang=hsh*6.2832+t*.11+(1.-k)*1.6;',
+'  float rad=sr*1.02+pow(fract(r*7.13),2.3)*1.;',
+'  float rr=rad*min(1.,asp*1.15);',
+'  pos=mix(pos,sc+vec2(cos(ang)*rr/asp,sin(ang)*rr),k);',
+'  col=mix(c.rgb,vec3(.93,.6,.2),k);',
+'  float oa=(1.-smoothstep(sr,1.2,rad))*1.2+(1.-smoothstep(sr,sr+.1,rad))*.3;',
+'  al=mix(alpha,oa*(.45+.55*r),k);',
+'  gl_Position=vec4(pos,0.,1.);',
+'  gl_PointSize=pr*mix(sz,1.3+1.8*(1.-fract(r*7.13)),k);',
+'}'].join('\n');
+var FS=['precision mediump float;varying vec3 col;varying float al;',
+'void main(){vec2 c=gl_PointCoord-.5;float d=length(c);if(d>.5)discard;float q=clamp(al,0.,1.)*(1.-smoothstep(.12,.5,d));gl_FragColor=vec4(col*q,q);}'].join('\n');
+function sh(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(s);return s}
+var pg=null;
+if(gl){try{pg=gl.createProgram();gl.attachShader(pg,sh(gl.VERTEX_SHADER,VS));gl.attachShader(pg,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pg);if(!gl.getProgramParameter(pg,gl.LINK_STATUS))throw 'link';gl.useProgram(pg);}catch(err){gl=null}}
+if(!gl)cv.style.display='none';
+else cv.addEventListener('webglcontextlost',function(e){e.preventDefault();cv.style.display='none';gl=null});
+var buf,N=0,STR=9*4,la,ls,lc,U={};
+if(gl){buf=gl.createBuffer();la=gl.getAttribLocation(pg,'a');ls=gl.getAttribLocation(pg,'sz');lc=gl.getAttribLocation(pg,'c');
+  ['t','p','asp','pr','hz','m','u','mp','e','sr','sc'].forEach(function(n){U[n]=gl.getUniformLocation(pg,n)});
+  gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);gl.clearColor(0,0,0,0);}
+var lastA=0;
+function size(){
+  var w=land.clientWidth,h=land.clientHeight,as=w/h;setGeo(w<860);sizeLand();
+  if(gl){cv.width=w*dpr;cv.height=h*dpr;gl.viewport(0,0,cv.width,cv.height);
+    if(!lastA||Math.abs(as-lastA)/lastA>.05||!N){lastA=as;var d=build(as);N=d.length/9;
+      gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,d,gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(la);gl.vertexAttribPointer(la,4,gl.FLOAT,false,STR,0);
+      gl.enableVertexAttribArray(ls);gl.vertexAttribPointer(ls,1,gl.FLOAT,false,STR,16);
+      gl.enableVertexAttribArray(lc);gl.vertexAttribPointer(lc,4,gl.FLOAT,false,STR,20);}}
+}
+var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){lastA=0;size();onScroll()},120)});
+size();onScroll();
+var t0=performance.now(),T0=4,last=t0;
+function frame(now){
+  if(window.__lenis)window.__lenis.raf(now);
+  var dt=Math.min(.05,(now-last)/1000);last=now;
+  var t=reduce?T0:(now-t0)/1000+T0;
+  onScroll();if(window.__scrollFx)window.__scrollFx();
+  var f=1-Math.pow(.86,dt*60),fm=1-Math.pow(.92,dt*60);
+  prog+=(target-prog)*(reduce?1:f);if(Math.abs(target-prog)<.0004)prog=target;
+  mouse[0]+=(mouseT[0]-mouse[0])*fm;mouse[1]+=(mouseT[1]-mouse[1])*fm;
+  if(stage.getBoundingClientRect().bottom>0){
+    var el=(now-t0)/1000,u=reduce?1:clamp(el/3.6,0,1),lift=reduce?1:1-Math.pow(1-clamp((el-.3)/5.5,0,1),3);
+    var mx=(reduce||mouseT[0]>2)?9:mouse[0];
+    var idle=[Math.sin(t*.13)*.4,Math.sin(t*.09)*.2];
+    var px=reduce?0:(mx>2?idle[0]:mouse[0]*.7+idle[0]*.3),py=reduce?0:(mx>2?idle[1]:mouse[1]*.7+idle[1]*.3);
+    G.so=(1-lift)*G.SR*1.9-lift*.02*Math.min(1,(el-5.8)>0?(el-5.8)/20:0);G.lift=lift;
+    var e=prog<.001?0:sm(0,.85,prog),cyN=.16,emR=Math.min(170,Math.max(110,Math.min(innerWidth,innerHeight)*.15))*.5*.95/(innerHeight/2);
+    var sx0=G.sx,sy0=G.sy-G.so;G.cur={x:sx0,y:sy0+(cyN-sy0)*e,r:G.SR+(emR*1.12-G.SR)*e};
+    paint(t,u,lift,px,py,e);
+    if(gl){gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.uniform1f(U.t,t);gl.uniform1f(U.p,prog);gl.uniform1f(U.asp,cv.width/cv.height);gl.uniform1f(U.pr,dpr);gl.uniform1f(U.hz,G.hz);gl.uniform1f(U.u,u);
+      gl.uniform2f(U.m,mx,reduce?9:mouse[1]);gl.uniform2f(U.mp,px,py);gl.uniform1f(U.e,e);gl.uniform1f(U.sr,G.cur.r);gl.uniform2f(U.sc,G.cur.x,G.cur.y);
+      gl.drawArrays(gl.POINTS,0,N);}
+    overlay(prog);
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+window.__setProg=function(v){var y=v*(stage.offsetHeight-innerHeight);if(window.__lenis)window.__lenis.scrollTo(y,{immediate:true});else scrollTo(0,y);onScroll();prog=target};
+})();
+</script>
+</body>
+</html>
