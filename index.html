@@ -492,7 +492,6 @@ function overlay(p,e){
   css(coreLogo,'opacity',c.toFixed(3));css(coreLogo,'transform','scale('+(.72+.28*c).toFixed(3)+')');
   css(halo,'opacity',sm(.55,.92,p).toFixed(3));css(disc,'opacity',sm(.82,.97,p).toFixed(3));
   var k=sm(.8,.98,p);css(coreCap,'opacity',k.toFixed(3));css(coreCap,'transform','translate3d(0,'+(18*(1-k)).toFixed(1)+'px,0)');
-  css(dissolve,'opacity',clamp((p-.86)/.14,0,1).toFixed(3));
 }
 
 /* ---- painted layers (2D) ---- */
@@ -502,7 +501,10 @@ function Y(y){return (1-y)/2*H}
 function sizeLand(){W=Math.round(land.clientWidth*ldpr);H=Math.round(land.clientHeight*ldpr);land.width=W;land.height=H;sky.style.setProperty('--hz',((1-G.hz)/2*100)+'%')}
 /* soft sunbeams, drawn once into small textures and slowly turned */
 function mkRays(n,seed){
-  var c=document.createElement('canvas');c.width=c.height=512;var k=c.getContext('2d');k.translate(256,256);
+  var c=document.createElement('canvas'),px=innerWidth<860?512:1024;c.width=c.height=px;var k=c.getContext('2d');k.scale(px/512,px/512);k.translate(256,256);
+  // shown as its own layer behind the painted land: the phone's GPU turns and fades it, nothing is redrawn per frame
+  c.id='ray'+seed;c.setAttribute('aria-hidden','true');c.style.cssText='position:absolute;left:0;top:0;width:512px;height:512px;margin:-256px 0 0 -256px;opacity:0;pointer-events:none;will-change:transform,opacity';
+  land.parentNode.insertBefore(c,land);
   var g=k.createRadialGradient(0,0,14,0,0,256);
   g.addColorStop(0,'rgba(255,250,228,1)');g.addColorStop(.3,'rgba(255,236,178,.6)');g.addColorStop(.7,'rgba(255,224,150,.16)');g.addColorStop(1,'rgba(255,220,140,0)');
   k.fillStyle=g;
@@ -522,13 +524,14 @@ function paint(t,u,lift,px,py,e,p){
   var S=G.cur,ga=.45+.55*lift,sxp=X(S.x),syp=Y(S.y),SRp=S.r/2*H,M=Math.max(W,H);
   var br=.5+.5*Math.sin(t*.7),day=sm(.05,.75,e),fl=sm(.56,.76,p)*(1-sm(.8,.99,p)),end=sm(.86,1,p);
   // wide morning light: grows and whitens as the sun climbs
-  glow(sxp,syp,M*(.42+.3*day),[0,'rgba(255,240,200,'+(.95*ga)+')',.2,'rgba(255,220,150,'+((.5+.22*day)*ga)+')',.55,'rgba(255,224,160,'+(.2*day*ga)+')',1,'rgba(255,214,140,0)']);
+  glow(sxp,syp,M*(.42+(G.small?.16:.3)*day),[0,'rgba(255,240,200,'+(.95*ga)+')',.2,'rgba(255,220,150,'+((.5+.22*day)*ga)+')',.55,'rgba(255,224,160,'+(.2*day*ga)+')',1,'rgba(255,214,140,0)']);
   cx.save();if(e<.02){cx.beginPath();cx.rect(0,0,W,Y(G.hz));cx.clip();}
   // sunbeams (two layers turning against each other)
   var ra=(.2*lift+.62*day+.3*fl+.14*end)*(.9+.1*br)*clamp(u*1.4,0,1);
-  if(ra>.01){var D=M*(1.05+.75*day+.25*fl);
-    cx.save();cx.translate(sxp,syp);cx.rotate(t*.028+.4);cx.globalAlpha=Math.min(1,ra);cx.drawImage(RAY1,-D/2,-D/2,D,D);
-    cx.rotate(-t*.05+1.3);cx.globalAlpha=Math.min(1,ra*.75);D*=.72;cx.drawImage(RAY2,-D/2,-D/2,D,D);cx.restore();}
+  if(ra>.01){var D=M*(1.05+.75*day+.25*fl)/ldpr/512,tr='translate3d('+(sxp/ldpr).toFixed(1)+'px,'+(syp/ldpr).toFixed(1)+'px,0) rotate(';
+    css(RAY1,'opacity',Math.min(1,ra).toFixed(2));css(RAY1,'transform',tr+(t*.028+.4).toFixed(4)+'rad) scale('+D.toFixed(3)+')');
+    css(RAY2,'opacity',Math.min(1,ra*.75).toFixed(2));css(RAY2,'transform',tr+(1.7-t*.022).toFixed(4)+'rad) scale('+(D*.72).toFixed(3)+')');}
+  else{css(RAY1,'opacity','0');css(RAY2,'opacity','0');}
   // corona
   glow(sxp,syp,SRp*(3.1+.9*day+.25*br),[0,'rgba(255,248,220,'+(.9*ga)+')',.3,'rgba(255,232,165,'+((.55+.25*day)*ga)+')',.62,'rgba(255,214,130,'+(.18+.12*day)*ga+')',1,'rgba(255,214,130,0)']);
   // the flash when the sun turns into the emblem, and the ring it sends out
@@ -588,6 +591,35 @@ function paint(t,u,lift,px,py,e,p){
       cx.stroke();}
   });
   cx.globalAlpha=1;
+  // the shore: as the emblem settles, layered waves roll in and lap onto the sand the next chapter sits on
+  var rise=clamp((p-.68)/.32,0,1);
+  if(rise>0){
+    var dy=-(1-rise)*.3,A=G.small?.6:1,F=G.small?.55:1,lap=Math.sin(t*.8)*.5+.5;
+    var wv=function(y0,amp,f,sp,ph,top,bot,hi){
+      var g2=cx.createLinearGradient(0,Y(y0+dy+.02),0,Y(y0+dy-.07));g2.addColorStop(0,top);g2.addColorStop(1,bot);
+      for(var q=hi?0:1;q<2;q++){cx.fillStyle=q?g2:hi;cx.beginPath();cx.moveTo(X(-1.1),Y(-1.1));
+        for(x=-1.1;x<=1.1+step;x+=step)cx.lineTo(X(x),Y(y0+dy+(q?0:.0035)+A*amp*(Math.sin(x*f*F+t*sp+ph)+.45*Math.sin(x*f*F*2.3-t*sp*1.4+ph*2))));
+        cx.lineTo(X(1.1),Y(-1.1));cx.closePath();cx.fill();}
+    };
+    wv(-.77,.013,2.7,.22,.5,'#C4DDEA','#8DBBDF','rgba(255,255,255,.55)');
+    wv(-.812,.02,2.1,-.3,2.1,'#7FB3DA','#4C8DCB','rgba(255,255,255,.4)');
+    wv(-.856,.024,1.7,.36,4.0,'#4F92CF','#2F77B8','rgba(255,255,255,.34)');
+    wv(-.898,.021,2.4,-.42,1.2,'#5FA6D4','#86C6DE','rgba(255,255,255,.42)');
+    // sun on the water, and small glints riding the waves
+    for(i=0;i<16;i++){var gy=-.79-i/15*.13+dy,gw2=(.02+.05*i/15)*(.55+.45*Math.sin(t*1.6+i*1.7))*(G.small?1.6:1);
+      cx.globalAlpha=.6*rise*(1-i/22);cx.fillStyle=i%2?'#FFE7AE':'#FFF6DC';
+      cx.fillRect(X(G.sx+Math.sin(t*.8+i*.9)*.012-gw2/2),Y(gy),gw2/2*W,Math.max(1,H*.0024));}
+    cx.globalAlpha=.6*rise;cx.strokeStyle='#F6FBFF';cx.lineWidth=Math.max(1,ldpr);
+    for(i=0;i<26;i++){var s2=(i*.618)%1,wy2=-.785-s2*.135+dy,wx2=((i*.37+t*.01*(1+s2)*(i%2?1:-1))%2.2+2.2)%2.2-1.1,ln=.014+.03*s2;
+      cx.beginPath();cx.moveTo(X(wx2),Y(wy2));cx.lineTo(X(wx2+ln),Y(wy2));cx.stroke();}
+    cx.globalAlpha=1;
+    // shallows, foam line that breathes in and out, wet sand, then the paper-coloured sand
+    var ye=-.932-.016*lap;
+    wv(ye+.012,.017,2.9,.3,.9,'#A9D8E6','#C9E8EC',null);
+    wv(ye+.001,.017,2.9,.3,1.0,'#FFFFFF','#FFFFFF',null);
+    wv(ye-.007,.017,2.9,.3,1.1,'#E7E0CC','#EEE9DA',null);
+    wv(-.968,.012,2.0,.1,3.3,'#F4F2EA','#F4F2EA',null);
+  }
 }
 
 /* ---- particles (WebGL): sparkle, mist, pollen, and the gather ---- */
