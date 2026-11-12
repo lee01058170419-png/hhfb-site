@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="HH F&amp;B는 스마트스토어·공동구매·라이브커머스·밴드 셀러를 위한 산지 신선식품 공급사입니다. 홍게·대게·과메기·굴비 등 수산물과 농산물·축산물을 발주서 한 장으로 받아 산지에서 고객에게 바로 출고하고 송장까지 회신합니다.">
-<meta name="keywords" content="HH F&amp;B, 에이치에이치에프앤비, 신선식품 공급, 산지 직송, 위탁 배송, 셀러 공급, 공동구매 공급, 스마트스토어 공급, 수산물 공급, 홍게, 국산대게, 랍스터, 과메기, 굴비, 박대, 피데기, 흑고동, 등갈비, LA갈비, 표고버섯, 울진">
+<meta name="keywords" content="HH F&amp;B, 에이치에이치에프앤비, 신선식품 공급, 산지 직송, 위탁 배송, 셀러 공급, 공동구매 공급, 스마트스토어 공급, 수산물 공급, 홍게, 국산대게, 랍스터, 과메기, 굴비, 박대, 피데기, 흑고동, 가자미, 미주구리회, 등갈비, LA갈비, 표고버섯, 감자, 고구마, 사과, 감귤, 토마토, 복숭아, 울진">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0F3D2E">
 <link rel="canonical" href="https://hhfb.co.kr/">
@@ -118,24 +118,70 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .head{display:flex;flex-direction:column;gap:20px;margin-bottom:clamp(48px,7vh,80px);max-width:880px}
 .head.center{align-items:center;text-align:center;margin-left:auto;margin-right:auto}
 
-/* 01 categories: three colour cards */
-.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.cat{position:relative;display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:var(--c);color:#fff;min-height:620px;isolation:isolate;transition:transform .7s var(--ease)}
-.cat{box-shadow:0 34px 50px -36px rgba(17,36,28,.5)}
-.cat:hover{transform:translateY(-8px)}
-.cat::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);pointer-events:none}
-.cat .ph{position:relative;height:52%;min-height:300px;overflow:hidden}
-.cat .ph img,.cat .ph video{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
-.cat .ph img,.cat .ph video{transform:scale(1.12)}
-.cat .ph img,.cat .ph video{-webkit-mask-image:linear-gradient(180deg,#000 48%,rgba(0,0,0,0) 90%);mask-image:linear-gradient(180deg,#000 48%,rgba(0,0,0,0) 90%)}
-.cat .body{flex:1;display:flex;flex-direction:column;padding:6px 30px 30px}
-.cat .no{font-family:var(--latin);font-style:italic;font-size:18px;opacity:.75}
-.cat h3{font-family:var(--display);font-weight:700;font-size:clamp(40px,4vw,64px);letter-spacing:-.04em;line-height:1.05;margin:6px 0 4px}
-.cat .en{font-size:20px;opacity:.85}
-.cat p{font-size:15.5px;line-height:1.75;opacity:.92;margin:18px 0 22px;max-width:28em}
-.cat .tags{margin-top:auto;display:flex;flex-wrap:wrap;gap:7px}
-.cat .tags span{font-size:13.5px;font-weight:500;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3)}
-@media (max-width:980px){.cats{grid-template-columns:1fr}.cat{min-height:0}.cat .ph{height:300px}}
+/* soft layered edges between chapters (same cut-paper curves as the hero ridges) */
+.edge{position:absolute;left:0;width:100%;height:clamp(64px,8.5vw,136px);display:block;pointer-events:none;overflow:hidden}
+.edge.low{height:clamp(46px,6vw,96px)}
+.edge.tall{height:clamp(150px,21vw,320px)}
+.edge.up{bottom:calc(100% - 1px)}
+.edge.dn{bottom:-1px}
+.edge path{will-change:transform}
+#collection{padding-bottom:clamp(170px,24vh,290px)}
+#flow{padding-bottom:clamp(250px,31vw,440px)}
+#sellers{padding-bottom:clamp(160px,22vh,270px)}
+
+/* the trail: a small sun marks where you are on the way down */
+.trail{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:15px;align-items:flex-end}
+.trail a{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:500;color:var(--forest)}
+.trail a span{opacity:0;transform:translateX(6px);transition:opacity .3s,transform .3s;background:rgba(244,242,234,.94);padding:3px 10px;border-radius:999px;box-shadow:0 4px 12px -6px rgba(17,36,28,.4)}
+.trail a:hover span,.trail a:focus-visible span{opacity:1;transform:none}
+.trail a i{width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px rgba(15,61,46,.5);transition:transform .5s var(--ease),background .4s,box-shadow .4s}
+.trail a.on i{background:var(--sun);box-shadow:0 0 0 4px rgba(242,163,58,.32),0 0 16px 3px rgba(255,200,110,.85);transform:scale(1.4)}
+@media (max-width:1180px){.trail{display:none}}
+
+/* 01 about: the mountains */
+.edge.scene{bottom:-1px;height:clamp(300px,42vw,620px)}
+#about{background:linear-gradient(180deg,#F4F2EA 0%,#E6EFEF 26%,#CFE3EA 58%,#F6E9CC 100%);padding-bottom:clamp(210px,25vw,380px)}
+#about .about-grid,#about .pillars{position:relative;z-index:1}
+#about .pillars{border-top:0;gap:18px}
+#about .pillars li,#about .pillars li+li{background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.9);border-radius:20px;padding:26px 24px;box-shadow:0 26px 44px -30px rgba(17,36,28,.55)}
+@media (max-width:860px){#about .pillars li,#about .pillars li+li{padding:20px;border-top:1px solid rgba(255,255,255,.9)}}
+
+.about-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(36px,6vw,110px);align-items:start}
+.about .head{margin-bottom:0}
+.about-body p{color:var(--dim);font-size:16.5px;line-height:1.95;margin-top:18px}
+.about-body p.big{font-family:var(--display);font-weight:500;font-size:clamp(21px,1.9vw,28px);line-height:1.62;letter-spacing:-.025em;color:var(--ink);margin-top:0}
+.pillars{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(56px,8vh,96px);border-top:2px solid var(--forest)}
+.pillars li{padding:30px 28px 4px 0;display:flex;gap:18px;align-items:flex-start}
+.pillars li+li{padding-left:28px;border-left:1px solid var(--faint)}
+.pillars .ic{flex:none;width:58px;height:58px;border-radius:50%;background:var(--c);display:grid;place-items:center}
+.pillars .ic svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pillars h3{font-family:var(--display);font-weight:600;font-size:clamp(19px,1.6vw,23px);letter-spacing:-.03em;line-height:1.35}
+.pillars p{color:var(--dim);font-size:15px;line-height:1.7;margin-top:6px}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}.pillars li{padding:22px 0}.pillars li+li{padding-left:0;border-left:0;border-top:1px solid var(--faint)}}
+
+/* 02 categories: the page walks down through sea, field and hillside */
+.cat-head{padding-bottom:clamp(250px,32vw,460px)}
+.cat-head .head{margin-bottom:0}
+.land{position:relative;background:var(--c);color:#fff}
+.band-head{position:relative;padding-top:clamp(30px,4vw,70px)}
+.band-head .head{margin-bottom:clamp(30px,4vw,60px)}
+.land .kicker{color:#fff}.land .kicker b{color:#FFE2A6}
+.land .deco{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.17}
+.land .deco path{fill:none;stroke:#fff;stroke-width:1.4;vector-effect:non-scaling-stroke}
+.land-in{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,6vw,110px);align-items:center;padding-top:clamp(36px,4.5vw,76px);padding-bottom:clamp(140px,15vw,236px)}
+.land.flip .media{order:2}
+.land .media{position:relative;overflow:hidden;border-radius:26px;aspect-ratio:16/10;width:100%;box-shadow:0 36px 60px -34px rgba(8,30,22,.65);isolation:isolate}
+.land .media::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);pointer-events:none}
+.land .media video{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.12)}
+.land.farm .media{aspect-ratio:1;max-width:470px;border-radius:999px 999px 26px 26px;justify-self:center}
+.land.meat .media{aspect-ratio:2/1;border-radius:999px}
+.land .no{font-family:var(--latin);font-style:italic;font-size:19px;opacity:.78}
+.land h3{font-family:var(--display);font-weight:700;font-size:clamp(46px,5.6vw,88px);letter-spacing:-.045em;line-height:1.05;margin:6px 0 4px}
+.land .en{font-size:22px;opacity:.86}
+.land p{font-size:16.5px;line-height:1.85;opacity:.94;margin:20px 0 24px;max-width:30em}
+.land .tags{display:flex;flex-wrap:wrap;gap:7px}
+.land .tags span{font-size:14px;font-weight:500;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.32)}
+@media (max-width:900px){.land-in{grid-template-columns:1fr}.land.flip .media{order:0}.land.farm .media{max-width:300px;justify-self:start}}
 
 /* 02 collection: deep green band */
 .dark{background:var(--forest);color:#F4F2EA}
@@ -151,24 +197,39 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (max-width:1200px){.grid>.card{width:calc((100% - 3*18px)/4)}}
 @media (max-width:900px){.grid>.card{width:calc((100% - 2*18px)/3)}}
 @media (max-width:640px){.grid{gap:28px 12px}.grid>.card{width:calc((100% - 12px)/2)}}
-.card{display:flex;flex-direction:column;gap:12px}
+.card{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center}
 .card[hidden]{display:none}
-.card .im{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:16px;background:#0B2E22}
+.card .im{position:relative;overflow:hidden;aspect-ratio:1;width:100%;border-radius:50%;background:#0B2E22}
+.card .ring{position:relative;width:88%;border-radius:50%;padding:5px;box-shadow:inset 0 0 0 2px var(--c)}
+@media (min-width:901px){.grid>.card:nth-child(even){margin-top:40px}}
 .card .im img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .card:hover .im img{transform:scale(1.07)}
-.card .im::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(244,242,234,.14);pointer-events:none}
+.card .im::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(244,242,234,.14);pointer-events:none}
 .card h3{transition:color .3s}.card:hover h3{color:#FFE2A6}
 @keyframes pop{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:none}}
-.card .im em{position:absolute;left:10px;top:10px;font-style:normal;font-size:12.5px;font-weight:500;padding:5px 11px;border-radius:999px;background:var(--c);color:#fff}
+.card .im em{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .card h3{font-family:var(--display);font-weight:600;font-size:clamp(20px,1.7vw,25px);letter-spacing:-.03em;line-height:1.25}
 .card .en{color:rgba(244,242,234,.6);font-size:14.5px}
-.note{margin-top:56px;text-align:center;color:rgba(244,242,234,.7);font-size:15px}
+.more{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:54px}
+.more[hidden],.more .chip[hidden]{display:none}
+.more .lab{flex-basis:100%;text-align:center;font-size:14.5px;color:rgba(244,242,234,.62);margin-bottom:6px}
+.more .chip{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:500;font-size:17px;letter-spacing:-.02em;padding:9px 20px;border-radius:999px;border:1px solid rgba(244,242,234,.26)}
+.more .chip i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.note{margin-top:40px;text-align:center;color:rgba(244,242,234,.7);font-size:15px}
 
 /* 03 flow: big numbered steps */
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;list-style:none;counter-reset:s}
 .step{position:relative;background:var(--card);border-radius:20px;padding:30px 26px 34px;border:1px solid var(--faint);overflow:hidden;box-shadow:0 22px 40px -32px rgba(17,36,28,.35);transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
 .step:hover{transform:translateY(-6px);box-shadow:0 30px 46px -30px rgba(17,36,28,.42)}
 .step::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--c)}
+.route{position:relative;height:60px;margin:-10px 0 8px}
+.route svg{position:absolute;inset:0;width:100%;height:100%}
+.route path{fill:none;stroke:var(--forest);stroke-opacity:.38;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1 9;vector-effect:non-scaling-stroke}
+.route i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--c);box-shadow:0 0 0 5px var(--bg)}
+.route i{box-shadow:0 0 0 5px #E7F0EC}
+.route span{position:absolute;top:-16px;font-family:var(--body);font-style:normal;font-weight:500;font-size:13.5px;letter-spacing:.02em;color:var(--forest);background:rgba(255,255,255,.75);padding:3px 11px;border-radius:999px}
+.route .a{left:0}.route .b{right:0}
+@media (max-width:980px){.route{display:none}}
 .step .n{font-family:var(--display);font-weight:700;font-size:64px;line-height:1;color:var(--c);letter-spacing:-.04em}
 .step h3{font-family:var(--display);font-weight:600;font-size:clamp(22px,1.9vw,28px);letter-spacing:-.03em;margin:22px 0 10px}
 .step p{color:var(--dim);font-size:15.5px;line-height:1.75}
@@ -176,6 +237,22 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .step:hover .arrow{transform:translateX(5px);opacity:1}
 @media (max-width:980px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* 04 flow sits under an open sky above the fields; 05 sellers stand on the near hill */
+#flow{background:linear-gradient(180deg,#F4F2EA 0%,#E7F0EC 40%,#DCEBEF 70%,#F6EBCB 100%)}
+#sellers{background:#2F6E37;color:#F4F2EA}
+#sellers .kicker{color:#DDEFC8}
+#sellers .lead{color:rgba(244,242,234,.8)}
+#sellers .pill{background:#F4F2EA;color:var(--forest)}
+#sellers .pill i{background:rgba(15,61,46,.12)}
+#sellers .rows{border-top-color:#F4F2EA}
+#sellers .row{border-bottom-color:rgba(244,242,234,.22)}
+#sellers .row:hover{background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,0))}
+#sellers .row p{color:rgba(244,242,234,.74)}
+#sellers .row .n{color:#FFD27A}
+#sellers .row .arr{border-color:rgba(244,242,234,.45);color:#F4F2EA}
+#sellers .row:hover .arr{background:#F4F2EA;color:var(--forest)}
+#sellers .split .h2 .soft{color:#F4F2EA}
 
 /* 04 sellers */
 .split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,100px);align-items:start}
@@ -193,9 +270,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* 05 contact */
 .contact{position:relative;overflow:hidden;padding-top:clamp(110px,15vh,170px);background:linear-gradient(180deg,var(--bg) 0%,#F6E6C8 75%,#F7D9A5 100%)}
-.contact .sunup{position:absolute;left:50%;bottom:-34vw;width:62vw;height:62vw;transform:translateX(-50%);border-radius:50%;pointer-events:none;
+.contact{--gh:150px}
+@media (max-width:860px){.contact{--gh:230px}}
+.contact .sunup{position:absolute;left:50%;bottom:calc(-31vw + var(--gh));width:62vw;height:62vw;transform:translateX(-50%);border-radius:50%;pointer-events:none;
   background:radial-gradient(circle,#FFF3CC 0,#FFD983 12%,#F7B65A 34%,rgba(247,182,90,.0) 70%);opacity:.8}
-.contact .sunrays{position:absolute;left:50%;bottom:-3vw;width:150vw;height:150vw;margin:0 0 -75vw -75vw;border-radius:50%;pointer-events:none;
+.contact .sunrays{position:absolute;left:50%;bottom:var(--gh);width:150vw;height:150vw;margin:0 0 -75vw -75vw;border-radius:50%;pointer-events:none;
   background:repeating-conic-gradient(rgba(255,253,240,0) 0deg,rgba(255,253,240,.85) 4deg,rgba(255,253,240,0) 9deg,rgba(255,253,240,0) 13deg,rgba(255,253,240,.5) 15.5deg,rgba(255,253,240,0) 18deg,rgba(255,253,240,0) 24deg);
   -webkit-mask-image:radial-gradient(circle,#000 10%,rgba(0,0,0,.6) 28%,rgba(0,0,0,0) 50%);mask-image:radial-gradient(circle,#000 10%,rgba(0,0,0,.6) 28%,rgba(0,0,0,0) 50%);animation:spin 160s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -208,7 +287,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .c-list .k{font-family:var(--latin);font-style:italic;color:var(--dim);font-size:16px}
 .c-list a{font-size:clamp(18px,1.6vw,22px);font-weight:500;transition:color .3s}
 .c-list a:hover{color:var(--sea)}
-.foot{position:relative;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;border-top:1px solid rgba(17,36,28,.18);padding-top:26px;padding-bottom:30px;color:var(--dim);font-size:13px;line-height:1.9}
+.ground{position:relative;margin:0 calc(var(--gut)*-1)}
+.ground svg{display:block;width:100%;height:clamp(70px,9vw,150px)}
+.foot{position:relative;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;background:var(--forest);margin-top:-1px;padding:8px var(--gut) 34px;color:rgba(244,242,234,.74);font-size:13px;line-height:1.9}
 @media (max-width:860px){.c-grid{grid-template-columns:1fr}}
 
 html.lenis,html.lenis body{height:auto}
@@ -220,7 +301,7 @@ html.lenis,html.lenis body{height:auto}
   .stage{height:100vh;height:100svh}
   .core,.core-cap{display:none}
   .hint i,.hero-copy .badge,.hero-copy .ln,.hero-p,.hero-btns,.contact .sunrays{animation:none}
-  .cat,.cat .ph img,.card .im img,.row,.row .arr{transition:none}
+  .card .im img,.row,.row .arr{transition:none}
 }
 </style>
 <script type="application/ld+json">
@@ -232,7 +313,7 @@ html.lenis,html.lenis body{height:auto}
 </script>
 </head>
 <body>
-<a href="#categories" class="skip">본문으로 건너뛰기</a>
+<a href="#about" class="skip">본문으로 건너뛰기</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="hh" viewBox="0 0 400 400">
     <circle cx="200" cy="200" r="190" fill="#0F3D2E"/>
@@ -249,6 +330,7 @@ html.lenis,html.lenis body{height:auto}
 <header class="nav gut" id="nav">
   <a href="#top" class="brand" aria-label="HH F&amp;B 처음으로"><svg aria-hidden="true"><use href="#hh"/></svg>HH F&amp;B</a>
   <nav class="nav-r" aria-label="주요 메뉴">
+    <a href="#about">회사 소개</a>
     <a href="#categories">취급 분야</a>
     <a href="#collection">품목</a>
     <a href="#flow">출고 방식</a>
@@ -256,6 +338,16 @@ html.lenis,html.lenis body{height:auto}
     <a href="#contact" class="pill">거래 문의 <i aria-hidden="true">→</i></a>
   </nav>
 </header>
+
+<nav class="trail" id="trail" aria-label="구간 이동">
+  <a href="#top" data-s="stage"><span>해돋이</span><i></i></a>
+  <a href="#about" data-s="about"><span>회사 소개</span><i></i></a>
+  <a href="#categories" data-s="categories"><span>바다 · 들 · 산자락</span><i></i></a>
+  <a href="#collection" data-s="collection"><span>품목</span><i></i></a>
+  <a href="#flow" data-s="flow"><span>출고 방식</span><i></i></a>
+  <a href="#sellers" data-s="sellers"><span>셀러</span><i></i></a>
+  <a href="#contact" data-s="contact"><span>거래 문의</span><i></i></a>
+</nav>
 
 <main id="top">
   <!-- HERO -->
@@ -286,75 +378,114 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </section>
 
-  <!-- 01 CATEGORIES -->
-  <section class="chap gut" id="categories">
-    <div data-rv class="head">
-      <span class="kicker"><b>01</b>취급 분야</span>
-      <h2 class="h2">산지에서 고른 상품을<br><span class="soft">셀러께 그대로 보냅니다.</span></h2>
-      <p class="lead">HH F&amp;B는 산지와 셀러 사이에 있습니다. 좋은 상품을 셀러가 가장 쉽게 팔 수 있도록, 발주부터 출고와 송장까지 보이지 않는 일을 맡습니다.</p>
+  <!-- 01 ABOUT -->
+  <section class="chap gut about" id="about">
+    <svg class="edge scene" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true"><path data-px="46" fill="#B9D0CC" d="M0,560 L0,138.7 L15,131.3 L30,121.3 L45,109.6 L60,97.3 L75,85.5 L90,75.3 L105,67.8 L120,63.9 L135,64.1 L150,68.9 L165,78.3 L180,91.9 L195,109.4 L210,129.8 L225,152.2 L240,175.5 L255,198.7 L270,220.7 L285,240.4 L300,257.3 L315,270.8 L330,280.5 L345,286.5 L360,288.8 L375,287.6 L390,282.9 L405,269.3 L420,252.9 L435,235.6 L450,218.6 L465,202.5 L480,187.9 L495,175.0 L510,164.0 L525,154.9 L540,147.5 L555,141.8 L570,137.3 L585,133.9 L600,131.2 L615,129.1 L630,127.3 L645,125.8 L660,124.3 L675,123.0 L690,121.7 L705,120.3 L720,119.0 L735,117.5 L750,115.9 L765,114.0 L780,111.6 L795,108.7 L810,105.1 L825,100.8 L840,95.9 L855,90.4 L870,84.7 L885,78.9 L900,73.6 L915,69.3 L930,66.5 L945,65.8 L960,67.7 L975,72.5 L990,80.6 L1005,92.0 L1020,106.5 L1035,123.9 L1050,143.5 L1065,164.7 L1080,186.5 L1095,208.0 L1110,228.1 L1125,245.9 L1140,260.7 L1155,271.7 L1170,278.7 L1185,281.3 L1200,279.9 L1215,274.7 L1230,266.3 L1245,254.7 L1260,234.9 L1275,214.0 L1290,194.2 L1305,176.6 L1320,162.3 L1335,151.8 L1350,145.4 L1365,143.1 L1380,144.4 L1395,148.7 L1410,155.2 L1425,162.8 L1440,170.5 L1440,560 Z"/><path data-px="28" fill="#7FA996" d="M0,560 L0,189.9 L15,180.7 L30,173.0 L45,167.1 L60,163.3 L75,161.6 L90,162.1 L105,164.7 L120,168.9 L135,174.4 L150,180.7 L165,187.1 L180,193.1 L195,198.1 L210,201.6 L225,203.1 L240,202.4 L255,199.5 L270,194.6 L285,187.9 L300,179.9 L315,171.5 L330,163.3 L345,156.1 L360,150.8 L375,147.9 L390,148.2 L405,151.9 L420,159.2 L435,169.9 L450,183.8 L465,200.2 L480,218.5 L495,237.7 L510,256.9 L525,275.1 L540,291.6 L555,305.5 L570,316.3 L585,323.6 L600,327.2 L615,327.4 L630,324.2 L645,317.9 L660,304.6 L675,288.6 L690,272.2 L705,256.3 L720,241.9 L735,229.4 L750,219.4 L765,212.0 L780,207.2 L795,204.8 L810,204.5 L825,205.7 L840,207.9 L855,210.5 L870,213.0 L885,214.9 L900,215.7 L915,215.3 L930,213.5 L945,210.3 L960,205.8 L975,200.2 L990,193.8 L1005,187.0 L1020,180.1 L1035,173.4 L1050,167.1 L1065,161.6 L1080,157.1 L1095,153.5 L1110,151.0 L1125,149.6 L1140,149.4 L1155,150.3 L1170,152.3 L1185,155.5 L1200,159.8 L1215,165.2 L1230,171.8 L1245,179.7 L1260,188.6 L1275,198.7 L1290,209.7 L1305,221.5 L1320,233.8 L1335,246.1 L1350,258.3 L1365,269.7 L1380,280.0 L1395,288.7 L1410,295.6 L1425,300.3 L1440,302.8 L1440,560 Z"/><path data-px="12" fill="#2F6B50" d="M0,560 L0,351.1 L15,355.4 L30,357.9 L45,358.3 L60,354.3 L75,347.4 L90,339.5 L105,331.0 L120,322.4 L135,314.0 L150,305.9 L165,298.4 L180,291.6 L195,285.4 L210,280.0 L225,275.3 L240,271.3 L255,267.8 L270,265.0 L285,262.7 L300,260.9 L315,259.6 L330,258.9 L345,258.6 L360,258.8 L375,259.4 L390,260.2 L405,261.3 L420,262.4 L435,263.4 L450,264.1 L465,264.3 L480,263.9 L495,262.8 L510,261.0 L525,258.5 L540,255.3 L555,251.8 L570,248.2 L585,244.8 L600,242.0 L615,240.2 L630,239.8 L645,241.0 L660,244.1 L675,249.2 L690,256.4 L705,265.3 L720,275.9 L735,287.6 L750,299.9 L765,312.4 L780,324.4 L795,335.3 L810,344.7 L825,352.0 L840,357.0 L855,359.6 L870,359.6 L885,357.3 L900,352.6 L915,343.1 L930,331.4 L945,319.3 L960,307.5 L975,296.8 L990,287.6 L1005,280.5 L1020,275.5 L1035,272.7 L1050,272.1 L1065,273.3 L1080,275.9 L1095,279.5 L1110,283.4 L1125,287.2 L1140,290.2 L1155,292.1 L1170,292.5 L1185,291.3 L1200,288.3 L1215,283.6 L1230,277.5 L1245,270.3 L1260,262.5 L1275,254.4 L1290,246.7 L1305,239.6 L1320,233.7 L1335,229.1 L1350,226.3 L1365,225.1 L1380,225.7 L1395,228.0 L1410,231.8 L1425,236.8 L1440,242.7 L1440,560 Z"/><path fill="#fff" opacity=".35" d="M0,336 L0,300.0 L15,302.0 L30,303.9 L45,305.7 L60,307.3 L75,308.8 L90,310.1 L105,311.1 L120,311.9 L135,312.4 L150,312.7 L165,312.7 L180,312.4 L195,312.0 L210,311.4 L225,310.6 L240,309.7 L255,308.7 L270,307.7 L285,306.8 L300,305.9 L315,305.1 L330,304.4 L345,303.9 L360,303.5 L375,303.3 L390,303.2 L405,303.3 L420,303.6 L435,304.0 L450,304.4 L465,304.9 L480,305.5 L495,306.0 L510,306.4 L525,306.8 L540,307.0 L555,307.0 L570,306.8 L585,306.4 L600,305.8 L615,305.0 L630,303.9 L645,302.7 L660,301.3 L675,299.7 L690,298.0 L705,296.2 L720,294.4 L735,292.6 L750,290.9 L765,289.3 L780,287.9 L795,286.7 L810,285.7 L825,284.9 L840,284.4 L855,284.3 L870,284.4 L885,284.7 L900,285.4 L915,286.3 L930,287.4 L945,288.6 L960,290.0 L975,291.4 L990,292.9 L1005,294.4 L1020,295.9 L1035,297.2 L1050,298.4 L1065,299.4 L1080,300.3 L1095,301.0 L1110,301.5 L1125,301.8 L1140,301.9 L1155,301.9 L1170,301.7 L1185,301.4 L1200,301.1 L1215,300.7 L1230,300.3 L1245,300.0 L1260,299.8 L1275,299.6 L1290,299.7 L1305,299.8 L1320,300.2 L1335,300.8 L1350,301.5 L1365,302.4 L1380,303.5 L1395,304.7 L1410,306.0 L1425,307.4 L1440,308.7 L1440,336"/> L1440,336 L0,336Z</svg>
+    <div class="about-grid">
+      <div data-rv class="head">
+        <span class="kicker"><b>01</b>회사 소개</span>
+        <h2 class="h2">경북 울진에서,<br><span class="soft">셀러의 고객 곁까지.</span></h2>
+      </div>
+      <div data-rv class="about-body" style="--d:.12s">
+        <p class="big">HH F&amp;B는 경북 울진에 자리한 신선식품 유통회사로, 온라인·소셜 셀러를 위한 산지 공급 파트너입니다.</p>
+        <p>동해에서 올라온 홍게와 국산대게, 해풍에 말린 과메기와 굴비 같은 수산물부터 재배사에서 키운 표고버섯, 등갈비와 LA갈비까지 산지에서 직접 고른 상품을 공급합니다.</p>
+        <p>셀러는 발주서 한 번만 보내면 되고, 품목별 발주와 산지 출고, 송장 회신은 HH F&amp;B가 처리합니다. 셀러가 판매에만 집중할 수 있도록, 좋은 상품을 가장 쉽게 팔 수 있는 구조를 만듭니다.</p>
+      </div>
     </div>
-    <div class="cats">
-      <article class="cat" data-rv style="--c:var(--sea)">
-        <div class="ph"><video src="img/v-sea.mp4" poster="img/c-sea.jpg" autoplay muted loop playsinline preload="metadata" aria-label="산지 위판장에서 대게를 바구니에 담는 모습"></video></div>
-        <div class="body">
+    <ul class="pillars">
+      <li data-rv style="--c:var(--sea)"><span class="ic" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M3 22l7-9 5 6 4-5 10 8"/><circle cx="23" cy="8" r="3"/></svg></span><div><h3>산지에서 직접 고릅니다</h3><p>동해 수산물부터 표고버섯, 등갈비와 LA갈비까지.</p></div></li>
+      <li data-rv style="--c:var(--leaf);--d:.1s"><span class="ic" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M3 12c4-4 7 4 11 0s7 4 11 0 3 1 4 1M3 20c4-4 7 4 11 0s7 4 11 0 3 1 4 1"/></svg></span><div><h3>발주서 한 번이면 됩니다</h3><p>품목별 발주와 산지 출고, 송장 회신은 HH F&amp;B가 처리합니다.</p></div></li>
+      <li data-rv style="--c:var(--ember);--d:.2s"><span class="ic" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="5"/><path d="M16 4v3M16 25v3M4 16h3M25 16h3M7.5 7.5l2.1 2.1M22.4 22.4l2.1 2.1M24.5 7.5l-2.1 2.1M9.6 22.4l-2.1 2.1"/></svg></span><div><h3>판매에만 집중하세요</h3><p>좋은 상품을 가장 쉽게 팔 수 있는 구조를 만듭니다.</p></div></li>
+    </ul>
+  </section>
+
+  <!-- 02 CATEGORIES -->
+  <section id="categories">
+    <article class="land sea" style="--c:var(--sea)">
+      <svg class="edge up" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path data-px="30" fill="#C4DDEA" d="M0,52 C220,90 430,14 700,46 C960,78 1180,16 1440,58 L1440,200 L0,200Z"/><path data-px="14" fill="#6FA9D6" d="M0,82 C260,44 500,104 780,72 C1030,44 1250,98 1440,62 L1440,200 L0,200Z"/><path fill="#1F72B8" d="M0,100 C240,70 470,119 750,95 C1010,73 1230,114 1440,88 L1440,121 L0,121Z"/></svg><svg class="deco" viewBox="0 0 1440 640" preserveAspectRatio="none" aria-hidden="true"><path d="M0,70.0 L30,73.5 L60,76.4 L90,78.5 L120,79.5 L150,79.5 L180,78.6 L210,77.3 L240,76.0 L270,75.2 L300,74.9 L330,75.3 L360,76.2 L390,77.2 L420,77.9 L450,77.8 L480,76.8 L510,74.8 L540,71.9 L570,68.4 L600,65.0 L630,62.0 L660,60.0 L690,59.1 L720,59.2 L750,60.3 L780,61.9 L810,63.6 L840,65.0 L870,65.7 L900,65.7 L930,65.2 L960,64.5 L990,64.0 L1020,64.1 L1050,65.1 L1080,67.0 L1110,69.8 L1140,73.1 L1170,76.4 L1200,79.2 L1230,81.2 L1260,82.0 L1290,81.7 L1320,80.3 L1350,78.4 L1380,76.3 L1410,74.5 L1440,73.3"/><path d="M0,168.3 L30,168.6 L60,167.6 L90,165.6 L120,162.7 L150,159.5 L180,156.5 L210,154.0 L240,152.4 L270,151.7 L300,151.7 L330,152.2 L360,152.7 L390,152.8 L420,152.3 L450,151.1 L480,149.3 L510,147.3 L540,145.5 L570,144.3 L600,144.2 L630,145.3 L660,147.5 L690,150.5 L720,153.9 L750,157.1 L780,159.8 L810,161.6 L840,162.4 L870,162.3 L900,161.7 L930,160.9 L960,160.4 L990,160.5 L1020,161.3 L1050,162.6 L1080,164.2 L1110,165.7 L1140,166.6 L1170,166.6 L1200,165.4 L1230,163.2 L1260,160.1 L1290,156.6 L1320,153.2 L1350,150.4 L1380,148.6 L1410,147.7 L1440,147.9"/><path d="M0,243.3 L30,240.6 L60,237.5 L90,234.3 L120,231.7 L150,229.9 L180,229.4 L210,230.0 L240,231.7 L270,233.9 L300,236.3 L330,238.3 L360,239.8 L390,240.4 L420,240.4 L450,240.1 L480,239.7 L510,239.8 L540,240.6 L570,242.3 L600,244.8 L630,247.7 L660,250.6 L690,253.0 L720,254.6 L750,254.9 L780,254.1 L810,252.2 L840,249.7 L870,247.0 L900,244.5 L930,242.7 L960,241.7 L990,241.5 L1020,241.7 L1050,242.1 L1080,242.1 L1110,241.5 L1140,240.2 L1170,238.1 L1200,235.5 L1230,232.9 L1260,230.7 L1290,229.3 L1320,229.1 L1350,230.2 L1380,232.2 L1410,235.0 L1440,238.1"/><path d="M0,320.2 L30,319.0 L60,318.4 L90,318.6 L120,320.0 L150,322.4 L180,325.6 L210,329.1 L240,332.5 L270,335.2 L300,336.9 L330,337.6 L360,337.2 L390,336.2 L420,334.9 L450,333.7 L480,333.0 L510,333.0 L540,333.6 L570,334.6 L600,335.5 L630,336.0 L660,335.7 L690,334.3 L720,331.9 L750,328.8 L780,325.3 L810,322.0 L840,319.3 L870,317.6 L900,317.0 L930,317.5 L960,318.8 L990,320.5 L1020,322.1 L1050,323.3 L1080,323.8 L1110,323.6 L1140,323.0 L1170,322.3 L1200,321.9 L1230,322.3 L1260,323.5 L1290,325.8 L1320,328.8 L1350,332.1 L1380,335.3 L1410,338.0 L1440,339.6"/><path d="M0,415.4 L30,415.8 L60,417.0 L90,418.9 L120,421.2 L150,423.6 L180,425.5 L210,426.5 L240,426.4 L270,425.1 L300,422.8 L330,419.7 L360,416.5 L390,413.6 L420,411.4 L450,410.1 L480,409.7 L510,409.9 L540,410.4 L570,410.8 L600,410.7 L630,410.0 L660,408.5 L690,406.6 L720,404.6 L750,403.0 L780,402.2 L810,402.4 L840,403.9 L870,406.3 L900,409.5 L930,412.9 L960,416.0 L990,418.4 L1020,419.9 L1050,420.4 L1080,420.1 L1110,419.4 L1140,418.7 L1170,418.4 L1200,418.7 L1230,419.7 L1260,421.1 L1290,422.8 L1320,424.1 L1350,424.8 L1380,424.4 L1410,422.9 L1440,420.3"/><path d="M0,503.4 L30,503.3 L60,503.7 L90,504.2 L120,504.5 L150,504.1 L180,502.8 L210,500.6 L240,497.7 L270,494.5 L300,491.4 L330,489.0 L360,487.7 L390,487.5 L420,488.5 L450,490.4 L480,492.7 L510,495.0 L540,496.8 L570,498.0 L600,498.5 L630,498.3 L660,497.9 L690,497.7 L720,498.0 L750,499.0 L780,501.0 L810,503.6 L840,506.6 L870,509.4 L900,511.6 L930,512.8 L960,512.8 L990,511.6 L1020,509.5 L1050,506.8 L1080,504.2 L1110,501.9 L1140,500.4 L1170,499.6 L1200,499.6 L1230,499.9 L1260,500.2 L1290,500.1 L1320,499.2 L1350,497.6 L1380,495.3 L1410,492.7 L1440,490.1"/><path d="M0,578.6 L30,579.5 L60,580.4 L90,581.0 L120,581.0 L150,580.3 L180,579.1 L210,577.8 L240,576.7 L270,576.3 L300,576.9 L330,578.6 L360,581.3 L390,584.7 L420,588.2 L450,591.4 L480,593.8 L510,595.2 L540,595.5 L570,594.9 L600,593.8 L630,592.4 L660,591.4 L690,590.9 L720,591.1 L750,591.9 L780,592.9 L810,593.8 L840,594.0 L870,593.4 L900,591.7 L930,589.0 L960,585.8 L990,582.3 L1020,579.1 L1050,576.7 L1080,575.3 L1110,575.1 L1140,575.9 L1170,577.4 L1200,579.1 L1230,580.5 L1260,581.5 L1290,581.8 L1320,581.4 L1350,580.7 L1380,580.1 L1410,579.9 L1440,580.5"/></svg>
+      <div class="gut band-head"><div data-rv class="head">
+        <span class="kicker"><b>02</b>취급 분야</span>
+        <h2 class="h2">바다와 들, 산자락에서<br><span class="soft">고른 것을 보냅니다.</span></h2>
+      </div></div>
+      <div class="land-in gut">
+        <div class="media" data-rv><video src="img/v-sea.mp4" poster="img/c-sea.jpg" autoplay muted loop playsinline preload="metadata" aria-label="산지 위판장에서 대게를 바구니에 담는 모습"></video></div>
+        <div class="txt" data-rv style="--d:.12s">
           <span class="no">01</span>
           <h3>수산물</h3><span class="en">Seafood</span>
           <p>동해에서 올라온 홍게와 대게, 바닷바람과 햇볕에 말린 과메기와 굴비까지. 산지에서 손질과 포장을 마치고 바로 출고합니다.</p>
-          <div class="tags"><span>홍게</span><span>국산대게</span><span>랍스터</span><span>흑고동</span><span>과메기</span><span>피데기</span><span>굴비</span><span>박대</span></div>
+          <div class="tags"><span>홍게</span><span>국산대게</span><span>랍스터</span><span>흑고동</span><span>과메기</span><span>피데기</span><span>굴비</span><span>박대</span><span>가자미</span><span>미주구리회</span></div>
         </div>
-      </article>
-      <article class="cat" data-rv style="--c:var(--leaf);--d:.12s">
-        <div class="ph"><video src="img/v-farm.mp4?v=2" poster="img/c-farm.jpg" autoplay muted loop playsinline preload="metadata" aria-label="울진 재배사에서 자라는 표고버섯"></video></div>
-        <div class="body">
+      </div>
+    </article>
+    <article class="land farm flip" style="--c:var(--leaf)">
+      <svg class="edge up" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path data-px="30" fill="#C9B35A" d="M0,64 C260,14 470,84 720,40 C980,6 1200,70 1440,34 L1440,200 L0,200Z"/><path data-px="14" fill="#9CC25B" d="M0,90 C220,54 520,108 800,66 C1040,40 1260,96 1440,70 L1440,200 L0,200Z"/><path fill="#4E9A2A" d="M0,96 C300,116 520,66 820,92 C1080,112 1260,74 1440,98 L1440,121 L0,121Z"/></svg><svg class="deco" viewBox="0 0 1440 640" preserveAspectRatio="none" aria-hidden="true"><path d="M0,54.7 L30,57.4 L60,59.9 L90,62.3 L120,64.4 L150,66.3 L180,67.9 L210,69.1 L240,70.0 L270,70.5 L300,70.6 L330,70.4 L360,69.9 L390,69.1 L420,68.0 L450,66.7 L480,65.3 L510,63.7 L540,62.1 L570,60.4 L600,58.8 L630,57.2 L660,55.7 L690,54.4 L720,53.2 L750,52.1 L780,51.1 L810,50.3 L840,49.6 L870,49.0 L900,48.4 L930,47.9 L960,47.3 L990,46.6 L1020,45.9 L1050,45.0 L1080,44.0 L1110,42.8 L1140,41.3 L1170,39.7 L1200,37.9 L1230,35.8 L1260,33.6 L1290,31.3 L1320,28.8 L1350,26.3 L1380,23.7 L1410,21.2 L1440,18.8"/><path d="M0,127.5 L30,129.6 L60,131.5 L90,132.9 L120,134.0 L150,134.8 L180,135.1 L210,135.2 L240,134.9 L270,134.3 L300,133.6 L330,132.6 L360,131.5 L390,130.3 L420,129.0 L450,127.7 L480,126.5 L510,125.3 L540,124.2 L570,123.1 L600,122.2 L630,121.4 L660,120.7 L690,120.0 L720,119.4 L750,118.7 L780,118.1 L810,117.4 L840,116.6 L870,115.6 L900,114.5 L930,113.1 L960,111.6 L990,109.8 L1020,107.8 L1050,105.5 L1080,103.0 L1110,100.3 L1140,97.5 L1170,94.5 L1200,91.4 L1230,88.3 L1260,85.2 L1290,82.2 L1320,79.3 L1350,76.7 L1380,74.2 L1410,72.1 L1440,70.3"/><path d="M0,196.3 L30,197.3 L60,198.0 L90,198.4 L120,198.5 L150,198.4 L180,198.0 L210,197.5 L240,196.9 L270,196.2 L300,195.5 L330,194.7 L360,194.0 L390,193.3 L420,192.7 L450,192.2 L480,191.7 L510,191.2 L540,190.8 L570,190.4 L600,189.9 L630,189.4 L660,188.7 L690,187.9 L720,186.9 L750,185.7 L780,184.2 L810,182.5 L840,180.5 L870,178.2 L900,175.6 L930,172.8 L960,169.7 L990,166.4 L1020,163.0 L1050,159.4 L1080,155.7 L1110,152.1 L1140,148.5 L1170,145.0 L1200,141.7 L1230,138.7 L1260,135.9 L1290,133.4 L1320,131.3 L1350,129.5 L1380,128.1 L1410,127.2 L1440,126.6"/><path d="M0,260.4 L30,260.8 L60,261.1 L90,261.2 L120,261.2 L150,261.1 L180,261.1 L210,261.0 L240,261.0 L270,261.0 L300,261.0 L330,261.1 L360,261.1 L390,261.2 L420,261.1 L450,261.1 L480,260.8 L510,260.5 L540,259.9 L570,259.1 L600,258.0 L630,256.6 L660,254.9 L690,252.8 L720,250.5 L750,247.7 L780,244.7 L810,241.4 L840,237.8 L870,234.0 L900,230.1 L930,226.0 L960,221.9 L990,217.8 L1020,213.8 L1050,209.9 L1080,206.2 L1110,202.8 L1140,199.6 L1170,196.8 L1200,194.4 L1230,192.3 L1260,190.6 L1290,189.2 L1320,188.2 L1350,187.6 L1380,187.2 L1410,187.2 L1440,187.3"/><path d="M0,324.0 L30,324.8 L60,325.5 L90,326.3 L120,327.1 L150,327.8 L180,328.6 L210,329.4 L240,330.1 L270,330.7 L300,331.2 L330,331.5 L360,331.6 L390,331.5 L420,331.1 L450,330.4 L480,329.3 L510,327.9 L540,326.0 L570,323.8 L600,321.1 L630,318.1 L660,314.8 L690,311.1 L720,307.2 L750,303.0 L780,298.7 L810,294.2 L840,289.8 L870,285.3 L900,281.0 L930,276.8 L960,272.8 L990,269.1 L1020,265.6 L1050,262.5 L1080,259.7 L1110,257.2 L1140,255.1 L1170,253.4 L1200,251.9 L1230,250.8 L1260,249.9 L1290,249.3 L1320,248.8 L1350,248.5 L1380,248.3 L1410,248.2 L1440,248.1"/><path d="M0,391.8 L30,393.4 L60,395.0 L90,396.6 L120,398.0 L150,399.3 L180,400.4 L210,401.3 L240,401.8 L270,402.1 L300,402.0 L330,401.4 L360,400.5 L390,399.1 L420,397.2 L450,394.9 L480,392.2 L510,389.0 L540,385.5 L570,381.6 L600,377.5 L630,373.1 L660,368.6 L690,364.0 L720,359.3 L750,354.7 L780,350.1 L810,345.7 L840,341.5 L870,337.5 L900,333.8 L930,330.4 L960,327.3 L990,324.5 L1020,322.0 L1050,319.8 L1080,317.8 L1110,316.1 L1140,314.6 L1170,313.3 L1200,312.1 L1230,311.0 L1260,310.0 L1290,309.0 L1320,308.1 L1350,307.2 L1380,306.3 L1410,305.4 L1440,304.5"/><path d="M0,464.6 L30,466.6 L60,468.4 L90,469.8 L120,470.9 L150,471.6 L180,471.9 L210,471.7 L240,471.0 L270,469.7 L300,468.0 L330,465.8 L360,463.1 L390,460.0 L420,456.5 L450,452.7 L480,448.5 L510,444.1 L540,439.5 L570,434.9 L600,430.2 L630,425.5 L660,420.9 L690,416.4 L720,412.1 L750,408.0 L780,404.1 L810,400.5 L840,397.1 L870,394.0 L900,391.1 L930,388.4 L960,385.9 L990,383.6 L1020,381.4 L1050,379.4 L1080,377.4 L1110,375.4 L1140,373.5 L1170,371.7 L1200,369.8 L1230,367.9 L1260,366.1 L1290,364.2 L1320,362.5 L1350,360.8 L1380,359.2 L1410,357.9 L1440,356.7"/><path d="M0,538.4 L30,539.7 L60,540.4 L90,540.6 L120,540.3 L150,539.4 L180,538.0 L210,536.0 L240,533.6 L270,530.7 L300,527.4 L330,523.7 L360,519.8 L390,515.6 L420,511.2 L450,506.7 L480,502.1 L510,497.6 L540,493.1 L570,488.7 L600,484.4 L630,480.3 L660,476.4 L690,472.6 L720,469.1 L750,465.7 L780,462.4 L810,459.3 L840,456.3 L870,453.3 L900,450.5 L930,447.6 L960,444.8 L990,442.0 L1020,439.1 L1050,436.3 L1080,433.4 L1110,430.5 L1140,427.6 L1170,424.8 L1200,422.1 L1230,419.5 L1260,417.1 L1290,414.9 L1320,413.0 L1350,411.4 L1380,410.2 L1410,409.4 L1440,409.1"/><path d="M0,607.9 L30,607.5 L60,606.6 L90,605.0 L120,603.0 L150,600.6 L180,597.7 L210,594.4 L240,590.9 L270,587.1 L300,583.1 L330,579.0 L360,574.8 L390,570.6 L420,566.4 L450,562.2 L480,558.2 L510,554.2 L540,550.3 L570,546.5 L600,542.8 L630,539.2 L660,535.7 L690,532.2 L720,528.7 L750,525.1 L780,521.6 L810,518.0 L840,514.3 L870,510.6 L900,506.8 L930,503.0 L960,499.1 L990,495.2 L1020,491.3 L1050,487.5 L1080,483.7 L1110,480.2 L1140,476.9 L1170,473.8 L1200,471.1 L1230,468.8 L1260,466.9 L1290,465.5 L1320,464.7 L1350,464.4 L1380,464.6 L1410,465.4 L1440,466.8"/><path d="M0,671.0 L30,669.2 L60,666.9 L90,664.3 L120,661.3 L150,658.2 L180,654.8 L210,651.3 L240,647.6 L270,644.0 L300,640.3 L330,636.5 L360,632.8 L390,629.1 L420,625.5 L450,621.8 L480,618.1 L510,614.4 L540,610.6 L570,606.8 L600,602.9 L630,598.8 L660,594.7 L690,590.4 L720,585.9 L750,581.3 L780,576.6 L810,571.8 L840,567.0 L870,562.1 L900,557.2 L930,552.4 L960,547.7 L990,543.2 L1020,539.0 L1050,535.1 L1080,531.6 L1110,528.5 L1140,525.9 L1170,523.8 L1200,522.3 L1230,521.4 L1260,521.1 L1290,521.4 L1320,522.2 L1350,523.7 L1380,525.6 L1410,528.1 L1440,531.0"/></svg>
+      <div class="land-in gut">
+        <div class="media" data-rv><video src="img/v-farm.mp4?v=2" poster="img/c-farm.jpg" autoplay muted loop playsinline preload="metadata" aria-label="울진 재배사에서 자라는 표고버섯"></video></div>
+        <div class="txt" data-rv style="--d:.12s">
           <span class="no">02</span>
           <h3>농산물</h3><span class="en">Produce</span>
-          <p>재배사에서 키운 표고버섯을 산지에서 바로 보냅니다. 농산 품목은 산지와 함께 하나씩 넓혀가고 있습니다.</p>
-          <div class="tags"><span>표고버섯</span></div>
+          <p>산지에서 갓 딴 제철 과일부터 감자와 고구마 같은 구황작물, 재배사에서 키운 표고버섯까지. 사과와 복숭아, 감귤, 토마토처럼 철마다 가장 맛이 오른 것을 골라 산지에서 바로 보냅니다.</p>
+          <div class="tags"><span>표고버섯</span><span>감자</span><span>고구마</span><span>사과</span><span>감귤</span><span>토마토</span><span>복숭아</span></div>
         </div>
-      </article>
-      <article class="cat" data-rv style="--c:var(--ember);--d:.24s">
-        <div class="ph"><video src="img/v-meat.mp4?v=3" poster="img/c-meat.jpg?v=3" autoplay muted loop playsinline preload="metadata" aria-label="손질한 등갈비와 구운 등갈비, LA갈비"></video></div>
-        <div class="body">
+      </div>
+    </article>
+    <article class="land meat" style="--c:var(--ember)">
+      <svg class="edge up" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path data-px="30" fill="#F2A33A" d="M0,44 C200,84 420,20 660,56 C920,90 1160,14 1440,52 L1440,200 L0,200Z"/><path data-px="14" fill="#E8824A" d="M0,84 C280,50 480,104 760,76 C1020,50 1240,100 1440,72 L1440,200 L0,200Z"/><path fill="#D9542C" d="M0,102 C260,76 500,118 780,96 C1040,78 1250,112 1440,90 L1440,121 L0,121Z"/></svg><svg class="deco" viewBox="0 0 1440 640" preserveAspectRatio="none" aria-hidden="true"><path d="M0,120.0 L30,114.4 L60,108.0 L90,101.3 L120,94.8 L150,88.7 L180,83.2 L210,78.4 L240,74.4 L270,71.3 L300,69.1 L330,67.6 L360,67.0 L390,66.9 L420,67.5 L450,68.4 L480,69.5 L510,70.8 L540,72.1 L570,73.3 L600,74.3 L630,75.1 L660,75.7 L690,76.2 L720,76.5 L750,76.7 L780,77.0 L810,77.4 L840,78.2 L870,79.3 L900,80.9 L930,83.0 L960,85.8 L990,89.2 L1020,93.3 L1050,97.8 L1080,102.7 L1110,107.7 L1140,111.0 L1170,110.9 L1200,110.3 L1230,109.5 L1260,108.3 L1290,106.8 L1320,104.9 L1350,102.5 L1380,99.6 L1410,96.1 L1440,92.2"/><path d="M0,142.0 L30,140.4 L60,139.8 L90,140.0 L120,140.9 L150,142.4 L180,144.4 L210,146.7 L240,149.1 L270,151.5 L300,153.8 L330,155.9 L360,157.7 L390,159.2 L420,160.5 L450,161.4 L480,162.2 L510,162.8 L540,163.4 L570,164.1 L600,165.0 L630,166.2 L660,167.8 L690,169.8 L720,172.3 L750,175.2 L780,178.3 L810,180.9 L840,180.1 L870,179.1 L900,178.1 L930,177.2 L960,176.4 L990,175.5 L1020,174.4 L1050,173.2 L1080,171.6 L1110,169.7 L1140,167.3 L1170,164.6 L1200,161.4 L1230,157.9 L1260,154.1 L1290,150.2 L1320,146.4 L1350,142.7 L1380,139.3 L1410,136.5 L1440,134.4"/><path d="M0,232.2 L30,235.4 L60,238.3 L90,240.9 L120,243.1 L150,244.8 L180,246.2 L210,247.2 L240,247.9 L270,248.4 L300,248.8 L330,249.3 L360,249.9 L390,250.7 L420,251.7 L450,252.9 L480,254.1 L510,252.4 L540,250.3 L570,248.4 L600,247.0 L630,245.9 L660,245.1 L690,244.6 L720,244.2 L750,243.9 L780,243.5 L810,242.9 L840,242.0 L870,240.7 L900,239.1 L930,237.1 L960,234.8 L990,232.2 L1020,229.4 L1050,226.6 L1080,223.8 L1110,221.3 L1140,219.2 L1170,217.6 L1200,216.7 L1230,216.7 L1260,217.6 L1290,219.4 L1320,222.2 L1350,225.9 L1380,230.6 L1410,236.0 L1440,242.0"/><path d="M0,332.0 L30,332.0 L60,331.8 L90,331.6 L120,331.3 L150,330.9 L180,328.5 L210,325.1 L240,322.0 L270,319.4 L300,317.4 L330,316.0 L360,315.1 L390,314.7 L420,314.7 L450,315.0 L480,315.4 L510,315.8 L540,316.2 L570,316.3 L600,316.2 L630,315.7 L660,314.8 L690,313.6 L720,312.0 L750,310.2 L780,308.2 L810,306.1 L840,304.2 L870,302.6 L900,301.4 L930,300.7 L960,300.7 L990,301.5 L1020,303.1 L1050,305.5 L1080,308.9 L1110,313.0 L1140,317.8 L1170,323.1 L1200,328.7 L1230,334.5 L1260,340.1 L1290,345.0 L1320,346.4 L1350,346.7 L1380,346.2 L1410,344.9 L1440,342.8"/><path d="M0,389.7 L30,387.8 L60,386.6 L90,386.0 L120,386.1 L150,386.7 L180,387.7 L210,388.9 L240,390.2 L270,391.5 L300,392.6 L330,393.5 L360,393.9 L390,394.0 L420,393.7 L450,392.9 L480,391.9 L510,390.5 L540,389.0 L570,387.5 L600,386.2 L630,385.0 L660,384.3 L690,384.2 L720,384.6 L750,385.8 L780,387.7 L810,390.4 L840,393.8 L870,397.7 L900,402.2 L930,406.8 L960,411.4 L990,413.6 L1020,414.9 L1050,415.7 L1080,416.0 L1110,415.8 L1140,414.9 L1170,413.4 L1200,411.2 L1230,408.4 L1260,405.0 L1290,401.0 L1320,396.6 L1350,392.0 L1380,387.3 L1410,382.7 L1440,378.3"/><path d="M0,468.5 L30,470.4 L60,472.1 L90,473.4 L120,474.2 L150,474.6 L180,474.5 L210,474.0 L240,473.1 L270,472.0 L300,470.6 L330,469.3 L360,468.1 L390,467.2 L420,466.7 L450,466.6 L480,467.2 L510,468.4 L540,470.3 L570,472.8 L600,475.7 L630,479.0 L660,481.1 L690,482.4 L720,483.6 L750,484.7 L780,485.7 L810,486.4 L840,486.7 L870,486.5 L900,485.7 L930,484.4 L960,482.5 L990,479.9 L1020,476.9 L1050,473.4 L1080,469.6 L1110,465.7 L1140,461.8 L1170,458.1 L1200,454.8 L1230,452.0 L1260,450.0 L1290,448.7 L1320,448.4 L1350,449.0 L1380,450.6 L1410,453.1 L1440,456.5"/><path d="M0,554.3 L30,553.0 L60,551.6 L90,550.1 L120,548.8 L150,547.7 L180,547.1 L210,546.9 L240,547.3 L270,548.3 L300,549.7 L330,550.8 L360,551.2 L390,552.0 L420,553.0 L450,554.3 L480,555.6 L510,557.0 L540,558.3 L570,559.2 L600,559.8 L630,559.8 L660,559.4 L690,558.3 L720,556.6 L750,554.4 L780,551.8 L810,548.8 L840,545.5 L870,542.2 L900,539.0 L930,536.1 L960,533.6 L990,531.6 L1020,530.4 L1050,530.0 L1080,530.5 L1110,531.9 L1140,534.1 L1170,537.2 L1200,541.0 L1230,545.3 L1260,550.1 L1290,555.1 L1320,560.1 L1350,565.0 L1380,569.4 L1410,573.2 L1440,576.2"/></svg>
+      <div class="land-in gut">
+        <div class="media" data-rv><video src="img/v-meat.mp4?v=3" poster="img/c-meat.jpg?v=3" autoplay muted loop playsinline preload="metadata" aria-label="손질한 등갈비와 구운 등갈비, LA갈비"></video></div>
+        <div class="txt" data-rv style="--d:.12s">
           <span class="no">03</span>
           <h3>축산물</h3><span class="en">Meat</span>
           <p>지금은 등갈비와 LA갈비를 공급하고 있고, 축산 품목을 계속 늘려가고 있습니다.</p>
           <div class="tags"><span>등갈비</span><span>LA갈비</span></div>
         </div>
-      </article>
-    </div>
+      </div>
+    </article>
   </section>
 
   <!-- 02 COLLECTION -->
   <section class="chap dark gut" id="collection">
+    <svg class="edge up" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path data-px="30" fill="#B8431F" d="M0,58 C200,92 380,8 640,44 C900,80 1100,10 1440,66 L1440,200 L0,200Z"/>
+      <path data-px="14" fill="#2F6B50" d="M0,86 C300,38 520,100 800,70 C1040,44 1260,102 1440,58 L1440,200 L0,200Z"/>
+      <path fill="#0F3D2E" d="M0,98 C260,62 460,119 760,93 C1020,71 1240,113 1440,85 L1440,121 L0,121Z"/>
+    </svg>
     <div data-rv class="head center">
-      <span class="kicker"><b>02</b>품목</span>
+      <span class="kicker"><b>03</b>품목</span>
       <h2 class="h2">지금 셀러분들께<br><span class="soft">공급하는 품목</span></h2>
-      <div class="filters" role="group" aria-label="품목 분류" id="filters"><button type="button" id="f0" aria-pressed="true" data-k="">전체 <small>11</small></button><button type="button" id="f1" aria-pressed="false" data-k="수산" style="--c:var(--sea)"><i></i>수산물 <small>8</small></button><button type="button" id="f2" aria-pressed="false" data-k="농산" style="--c:var(--leaf)"><i></i>농산물 <small>1</small></button><button type="button" id="f3" aria-pressed="false" data-k="축산" style="--c:var(--ember)"><i></i>축산물 <small>2</small></button></div>
+      <div class="filters" role="group" aria-label="품목 분류" id="filters"><button type="button" id="f0" aria-pressed="true" data-k="">전체 <small>19</small></button><button type="button" id="f1" aria-pressed="false" data-k="수산" style="--c:var(--sea)"><i></i>수산물 <small>10</small></button><button type="button" id="f2" aria-pressed="false" data-k="농산" style="--c:var(--leaf)"><i></i>농산물 <small>7</small></button><button type="button" id="f3" aria-pressed="false" data-k="축산" style="--c:var(--ember)"><i></i>축산물 <small>2</small></button></div>
     </div>
     <p class="sr" aria-live="polite" id="count"></p>
     <div class="grid" id="grid">
-      <article class="card" data-rv style="--d:0.00s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-hongge.jpg?v=2" alt="홍게 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>홍게</h3><span class="en">Red Snow Crab</span></div></article>
-      <article class="card" data-rv style="--d:0.06s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-daege.jpg?v=3" alt="국산 대게 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>국산대게</h3><span class="en">Korean Snow Crab</span></div></article>
-      <article class="card" data-rv style="--d:0.12s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-lobster.jpg?v=3" alt="랍스터 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>랍스터</h3><span class="en">Lobster</span></div></article>
-      <article class="card" data-rv style="--d:0.18s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-heukgodong.jpg?v=2" alt="흑고동 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>흑고동</h3><span class="en">Black Whelk</span></div></article>
-      <article class="card" data-rv style="--d:0.24s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-gwamegi.jpg?v=3" alt="과메기 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>과메기</h3><span class="en">Gwamegi</span></div></article>
-      <article class="card" data-rv style="--d:0.30s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-pidegi.jpg" alt="피데기 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>피데기</h3><span class="en">Half-dried Squid</span></div></article>
-      <article class="card" data-rv style="--d:0.00s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-gulbi.jpg?v=3" alt="굴비 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>굴비</h3><span class="en">Yellow Croaker</span></div></article>
-      <article class="card" data-rv style="--d:0.06s;--c:var(--sea)" data-k="수산"><div class="im"><img src="img/p-bakdae.jpg" alt="박대 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div><div><h3>박대</h3><span class="en">Tonguefish</span></div></article>
-      <article class="card" data-rv style="--d:0.12s;--c:var(--leaf)" data-k="농산"><div class="im"><img src="img/p-pyogo.jpg?v=2" alt="표고버섯 (농산물)" loading="lazy" width="400" height="500"><em>농산물</em></div><div><h3>표고버섯</h3><span class="en">Shiitake</span></div></article>
-      <article class="card" data-rv style="--d:0.18s;--c:var(--ember)" data-k="축산"><div class="im"><img src="img/p-ribs.jpg?v=2" alt="등갈비 (축산물)" loading="lazy" width="400" height="500"><em>축산물</em></div><div><h3>등갈비</h3><span class="en">Pork Back Ribs</span></div></article>
-      <article class="card" data-rv style="--d:0.24s;--c:var(--ember)" data-k="축산"><div class="im"><img src="img/p-lagalbi.jpg?v=3" alt="LA갈비 (축산물)" loading="lazy" width="400" height="500"><em>축산물</em></div><div><h3>LA갈비</h3><span class="en">LA-style Short Ribs</span></div></article>
+      <article class="card" data-rv style="--d:0.00s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-hongge.jpg?v=2" alt="홍게 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>홍게</h3><span class="en">Red Snow Crab</span></div></article>
+      <article class="card" data-rv style="--d:0.06s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-daege.jpg?v=3" alt="국산 대게 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>국산대게</h3><span class="en">Korean Snow Crab</span></div></article>
+      <article class="card" data-rv style="--d:0.12s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-lobster.jpg?v=3" alt="랍스터 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>랍스터</h3><span class="en">Lobster</span></div></article>
+      <article class="card" data-rv style="--d:0.18s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-heukgodong.jpg?v=2" alt="흑고동 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>흑고동</h3><span class="en">Black Whelk</span></div></article>
+      <article class="card" data-rv style="--d:0.24s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-gwamegi.jpg?v=3" alt="과메기 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>과메기</h3><span class="en">Gwamegi</span></div></article>
+      <article class="card" data-rv style="--d:0.30s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-pidegi.jpg" alt="피데기 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>피데기</h3><span class="en">Half-dried Squid</span></div></article>
+      <article class="card" data-rv style="--d:0.00s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-gulbi.jpg?v=3" alt="굴비 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>굴비</h3><span class="en">Yellow Croaker</span></div></article>
+      <article class="card" data-rv style="--d:0.06s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-bakdae.jpg" alt="박대 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>박대</h3><span class="en">Tonguefish</span></div></article>
+      <article class="card" data-rv style="--d:0.12s;--c:var(--leaf)" data-k="농산"><div class="ring"><div class="im"><img src="img/p-pyogo.jpg?v=2" alt="표고버섯 (농산물)" loading="lazy" width="400" height="500"><em>농산물</em></div></div><div><h3>표고버섯</h3><span class="en">Shiitake</span></div></article>
+      <article class="card" data-rv style="--d:0.18s;--c:var(--ember)" data-k="축산"><div class="ring"><div class="im"><img src="img/p-ribs.jpg?v=2" alt="등갈비 (축산물)" loading="lazy" width="400" height="500"><em>축산물</em></div></div><div><h3>등갈비</h3><span class="en">Pork Back Ribs</span></div></article>
+      <article class="card" data-rv style="--d:0.24s;--c:var(--ember)" data-k="축산"><div class="ring"><div class="im"><img src="img/p-lagalbi.jpg?v=3" alt="LA갈비 (축산물)" loading="lazy" width="400" height="500"><em>축산물</em></div></div><div><h3>LA갈비</h3><span class="en">LA-style Short Ribs</span></div></article>
     </div>
-    <p class="note" data-rv>농산·축산 품목은 계속 늘려가고 있습니다. 찾으시는 품목이 있으면 편하게 물어봐 주세요.</p>
+    <div class="more" id="more" data-rv><span class="lab">이 밖에도</span><span class="chip" data-k="수산" style="--c:var(--sea)"><i></i>가자미</span><span class="chip" data-k="수산" style="--c:var(--sea)"><i></i>미주구리회</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>감자</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>고구마</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>사과</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>감귤</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>토마토</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>복숭아</span></div>
+    <p class="note" data-rv>품목은 철에 따라 달라집니다. 찾으시는 품목이 있으면 편하게 물어봐 주세요.</p>
+    <svg class="edge dn" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path data-px="26" fill="#1D5C45" d="M0,44 C280,92 520,16 800,54 C1080,92 1260,28 1440,66 L1440,200 L0,200Z"/>
+      <path data-px="12" fill="#5E9A7C" opacity=".55" d="M0,78 C240,40 470,100 740,70 C1010,42 1230,96 1440,62 L1440,200 L0,200Z"/>
+      <path fill="#F4F2EA" d="M0,92 C220,60 480,116 760,90 C1040,64 1240,112 1440,82 L1440,121 L0,121Z"/>
+    </svg>
   </section>
 
   <!-- 03 FLOW -->
   <section class="chap gut" id="flow">
     <div data-rv class="head">
-      <span class="kicker"><b>03</b>출고 방식</span>
+      <span class="kicker"><b>04</b>출고 방식</span>
       <h2 class="h2">발주서 한 장이면<br><span class="soft">산지에서 바로 갑니다.</span></h2>
       <p class="lead">처음 거래하시는 셀러분도 어렵지 않게. 네 단계면 충분합니다.</p>
     </div>
+    <div class="route" data-rv aria-hidden="true"><svg viewBox="0 0 1000 60" preserveAspectRatio="none"><path d="M0,40 C50,40 80,22 125,30 C200,44 300,14 375,30 C450,46 550,14 625,30 C700,46 800,14 875,30 C920,38 960,24 1000,26"/></svg><i style="left:12.5%;--c:var(--sea)"></i><i style="left:37.5%;--c:var(--leaf)"></i><i style="left:62.5%;--c:var(--sun)"></i><i style="left:87.5%;--c:var(--ember)"></i><span class="a">셀러</span><span class="b">고객</span></div>
     <ol class="steps">
       <li class="step" data-rv style="--d:0s;--c:var(--sea)"><span class="n">01</span><span class="arrow" aria-hidden="true">→</span><h3>발주서 전송</h3><p>셀러가 주문 내역을 엑셀 발주서로 보냅니다.</p></li>
       <li class="step" data-rv style="--d:.1s;--c:var(--leaf)"><span class="n">02</span><span class="arrow" aria-hidden="true">→</span><h3>품목별 발주</h3><p>HH F&amp;B가 품목별로 정리해 산지 업체에 발주합니다.</p></li>
@@ -364,10 +495,12 @@ html.lenis,html.lenis body{height:auto}
   </section>
 
   <!-- 04 SELLERS -->
-  <section class="chap gut" id="sellers" style="background:var(--bg-2)">
+  <section class="chap gut" id="sellers">
+    
+    <svg class="edge up tall" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true"><path data-px="40" fill="#9CC25B" d="M0,470 L0,80.8 L15,83.4 L30,85.5 L45,87.1 L60,88.1 L75,88.6 L90,88.5 L105,88.0 L120,87.0 L135,85.8 L150,84.4 L165,82.9 L180,81.4 L195,80.0 L210,78.8 L225,77.8 L240,77.1 L255,76.6 L270,76.4 L285,76.3 L300,76.3 L315,76.4 L330,76.4 L345,76.3 L360,75.9 L375,75.3 L390,74.2 L405,72.8 L420,71.1 L435,68.9 L450,66.5 L465,63.8 L480,61.0 L495,58.2 L510,55.6 L525,53.1 L540,51.0 L555,49.3 L570,48.2 L585,47.6 L600,47.7 L615,48.4 L630,49.7 L645,51.4 L660,53.7 L675,56.2 L690,59.0 L705,61.8 L720,64.6 L735,67.3 L750,69.7 L765,71.8 L780,73.6 L795,75.0 L810,75.9 L825,76.5 L840,76.9 L855,76.9 L870,76.9 L885,76.8 L900,76.7 L915,76.8 L930,77.0 L945,77.5 L960,78.2 L975,79.1 L990,80.3 L1005,81.7 L1020,83.1 L1035,84.5 L1050,85.9 L1065,87.0 L1080,87.8 L1095,88.2 L1110,88.2 L1125,87.6 L1140,86.5 L1155,84.8 L1170,82.6 L1185,79.9 L1200,76.9 L1215,73.7 L1230,70.3 L1245,66.9 L1260,63.6 L1275,60.6 L1290,58.0 L1305,55.8 L1320,54.1 L1335,52.9 L1350,52.3 L1365,52.2 L1380,52.6 L1395,53.4 L1410,54.4 L1425,55.7 L1440,57.0 L1440,470 Z"/><path data-px="40" fill="none" stroke="rgba(20,60,30,.2)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,94.8 L24,98.7 L48,101.3 L72,102.5 L96,102.3 L120,101.0 L144,99.0 L168,96.6 L192,94.3 L216,92.4 L240,91.1 L264,90.4 L288,90.3 L312,90.4 L336,90.4 L360,89.9 L384,88.7 L408,86.5 L432,83.4 L456,79.5 L480,75.0 L504,70.6 L528,66.6 L552,63.6 L576,61.9 L600,61.7 L624,63.1 L648,65.9 L672,69.7 L696,74.1 L720,78.6 L744,82.8 L768,86.2 L792,88.7 L816,90.2 L840,90.9 L864,90.9 L888,90.8 L912,90.7 L936,91.2 L960,92.2 L984,93.8 L1008,96.0 L1032,98.3 L1056,100.4 L1080,101.8 L1104,102.3 L1128,101.4 L1152,99.2 L1176,95.6 L1200,90.9 L1224,85.7 L1248,80.2 L1272,75.2 L1296,71.0 L1320,68.1 L1344,66.5 L1368,66.3 L1392,67.2 L1416,68.9 L1440,71.0"/><path data-px="40" fill="none" stroke="rgba(20,60,30,.2)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,108.8 L24,112.7 L48,115.3 L72,116.5 L96,116.3 L120,115.0 L144,113.0 L168,110.6 L192,108.3 L216,106.4 L240,105.1 L264,104.4 L288,104.3 L312,104.4 L336,104.4 L360,103.9 L384,102.7 L408,100.5 L432,97.4 L456,93.5 L480,89.0 L504,84.6 L528,80.6 L552,77.6 L576,75.9 L600,75.7 L624,77.1 L648,79.9 L672,83.7 L696,88.1 L720,92.6 L744,96.8 L768,100.2 L792,102.7 L816,104.2 L840,104.9 L864,104.9 L888,104.8 L912,104.7 L936,105.2 L960,106.2 L984,107.8 L1008,110.0 L1032,112.3 L1056,114.4 L1080,115.8 L1104,116.3 L1128,115.4 L1152,113.2 L1176,109.6 L1200,104.9 L1224,99.7 L1248,94.2 L1272,89.2 L1296,85.0 L1320,82.1 L1344,80.5 L1368,80.3 L1392,81.2 L1416,82.9 L1440,85.0"/><path data-px="40" fill="none" stroke="rgba(20,60,30,.2)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,122.8 L24,126.7 L48,129.3 L72,130.5 L96,130.3 L120,129.0 L144,127.0 L168,124.6 L192,122.3 L216,120.4 L240,119.1 L264,118.4 L288,118.3 L312,118.4 L336,118.4 L360,117.9 L384,116.7 L408,114.5 L432,111.4 L456,107.5 L480,103.0 L504,98.6 L528,94.6 L552,91.6 L576,89.9 L600,89.7 L624,91.1 L648,93.9 L672,97.7 L696,102.1 L720,106.6 L744,110.8 L768,114.2 L792,116.7 L816,118.2 L840,118.9 L864,118.9 L888,118.8 L912,118.7 L936,119.2 L960,120.2 L984,121.8 L1008,124.0 L1032,126.3 L1056,128.4 L1080,129.8 L1104,130.3 L1128,129.4 L1152,127.2 L1176,123.6 L1200,118.9 L1224,113.7 L1248,108.2 L1272,103.2 L1296,99.0 L1320,96.1 L1344,94.5 L1368,94.3 L1392,95.2 L1416,96.9 L1440,99.0"/><path data-px="26" fill="#C9B35A" d="M0,470 L0,134.3 L15,132.5 L30,130.9 L45,129.5 L60,128.3 L75,127.4 L90,126.8 L105,126.3 L120,126.1 L135,125.9 L150,125.8 L165,125.7 L180,125.6 L195,125.3 L210,124.9 L225,124.2 L240,123.3 L255,122.2 L270,120.7 L285,118.9 L300,116.9 L315,114.6 L330,112.1 L345,109.4 L360,106.6 L375,103.8 L390,101.0 L405,98.3 L420,95.9 L435,93.7 L450,91.9 L465,90.5 L480,89.5 L495,89.1 L510,89.1 L525,89.7 L540,90.9 L555,92.5 L570,94.7 L585,97.2 L600,100.1 L615,103.3 L630,106.7 L645,110.3 L660,113.9 L675,117.4 L690,120.8 L705,124.0 L720,127.0 L735,129.6 L750,131.9 L765,133.9 L780,135.4 L795,136.6 L810,137.3 L825,137.8 L840,138.0 L855,137.9 L870,137.6 L885,137.2 L900,136.8 L915,136.3 L930,135.9 L945,135.7 L960,135.5 L975,135.6 L990,135.9 L1005,136.3 L1020,137.0 L1035,137.9 L1050,138.9 L1065,140.0 L1080,141.1 L1095,142.3 L1110,143.3 L1125,144.3 L1140,145.0 L1155,145.4 L1170,145.5 L1185,145.2 L1200,144.5 L1215,143.4 L1230,141.8 L1245,139.8 L1260,137.3 L1275,134.5 L1290,131.3 L1305,127.8 L1320,124.2 L1335,120.3 L1350,116.5 L1365,112.6 L1380,108.9 L1395,105.5 L1410,102.3 L1425,99.4 L1440,97.0 L1440,470 Z"/><path data-px="26" fill="none" stroke="rgba(255,248,220,.3)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,148.3 L24,145.5 L48,143.2 L72,141.6 L96,140.6 L120,140.1 L144,139.8 L168,139.7 L192,139.4 L216,138.6 L240,137.3 L264,135.3 L288,132.5 L312,129.1 L336,125.0 L360,120.6 L384,116.1 L408,111.8 L432,108.1 L456,105.3 L480,103.5 L504,103.0 L528,103.9 L552,106.2 L576,109.6 L600,114.1 L624,119.4 L648,125.0 L672,130.7 L696,136.1 L720,141.0 L744,145.1 L768,148.2 L792,150.3 L816,151.6 L840,152.0 L864,151.7 L888,151.1 L912,150.4 L936,149.8 L960,149.5 L984,149.7 L1008,150.5 L1032,151.7 L1056,153.3 L1080,155.1 L1104,156.9 L1128,158.4 L1152,159.3 L1176,159.4 L1200,158.5 L1224,156.5 L1248,153.3 L1272,149.1 L1296,143.9 L1320,138.2 L1344,132.0 L1368,125.9 L1392,120.1 L1416,115.1 L1440,111.0"/><path data-px="26" fill="none" stroke="rgba(255,248,220,.3)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,162.3 L24,159.5 L48,157.2 L72,155.6 L96,154.6 L120,154.1 L144,153.8 L168,153.7 L192,153.4 L216,152.6 L240,151.3 L264,149.3 L288,146.5 L312,143.1 L336,139.0 L360,134.6 L384,130.1 L408,125.8 L432,122.1 L456,119.3 L480,117.5 L504,117.0 L528,117.9 L552,120.2 L576,123.6 L600,128.1 L624,133.4 L648,139.0 L672,144.7 L696,150.1 L720,155.0 L744,159.1 L768,162.2 L792,164.3 L816,165.6 L840,166.0 L864,165.7 L888,165.1 L912,164.4 L936,163.8 L960,163.5 L984,163.7 L1008,164.5 L1032,165.7 L1056,167.3 L1080,169.1 L1104,170.9 L1128,172.4 L1152,173.3 L1176,173.4 L1200,172.5 L1224,170.5 L1248,167.3 L1272,163.1 L1296,157.9 L1320,152.2 L1344,146.0 L1368,139.9 L1392,134.1 L1416,129.1 L1440,125.0"/><path data-px="26" fill="none" stroke="rgba(255,248,220,.3)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,176.3 L24,173.5 L48,171.2 L72,169.6 L96,168.6 L120,168.1 L144,167.8 L168,167.7 L192,167.4 L216,166.6 L240,165.3 L264,163.3 L288,160.5 L312,157.1 L336,153.0 L360,148.6 L384,144.1 L408,139.8 L432,136.1 L456,133.3 L480,131.5 L504,131.0 L528,131.9 L552,134.2 L576,137.6 L600,142.1 L624,147.4 L648,153.0 L672,158.7 L696,164.1 L720,169.0 L744,173.1 L768,176.2 L792,178.3 L816,179.6 L840,180.0 L864,179.7 L888,179.1 L912,178.4 L936,177.8 L960,177.5 L984,177.7 L1008,178.5 L1032,179.7 L1056,181.3 L1080,183.1 L1104,184.9 L1128,186.4 L1152,187.3 L1176,187.4 L1200,186.5 L1224,184.5 L1248,181.3 L1272,177.1 L1296,171.9 L1320,166.2 L1344,160.0 L1368,153.9 L1392,148.1 L1416,143.1 L1440,139.0"/><path data-px="14" fill="#5E9A3A" d="M0,470 L0,169.2 L15,167.5 L30,165.6 L45,163.5 L60,161.4 L75,159.1 L90,156.8 L105,154.5 L120,152.2 L135,150.0 L150,148.0 L165,146.1 L180,144.5 L195,143.2 L210,142.1 L225,141.5 L240,141.2 L255,141.3 L270,141.9 L285,142.9 L300,144.2 L315,146.0 L330,148.2 L345,150.8 L360,153.7 L375,156.8 L390,160.3 L405,163.9 L420,167.6 L435,171.4 L450,175.3 L465,179.1 L480,182.8 L495,186.4 L510,189.8 L525,192.9 L540,195.8 L555,198.4 L570,200.7 L585,202.6 L600,204.1 L615,205.3 L630,206.2 L645,206.7 L660,206.9 L675,206.8 L690,206.5 L705,206.0 L720,205.3 L735,204.5 L750,203.6 L765,202.6 L780,201.7 L795,200.8 L810,199.9 L825,199.2 L840,198.6 L855,198.2 L870,197.9 L885,197.8 L900,197.9 L915,198.1 L930,198.4 L945,198.9 L960,199.5 L975,200.1 L990,200.7 L1005,201.3 L1020,201.9 L1035,202.4 L1050,202.7 L1065,202.8 L1080,202.7 L1095,202.4 L1110,201.7 L1125,200.8 L1140,199.6 L1155,198.0 L1170,196.0 L1185,193.8 L1200,191.2 L1215,188.4 L1230,185.3 L1245,182.0 L1260,178.5 L1275,174.9 L1290,171.2 L1305,167.5 L1320,163.8 L1335,160.2 L1350,156.7 L1365,153.5 L1380,150.5 L1395,147.8 L1410,145.4 L1425,143.4 L1440,141.8 L1440,470 Z"/><path data-px="14" fill="none" stroke="rgba(20,60,30,.2)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,183.2 L24,180.4 L48,177.1 L72,173.6 L96,169.9 L120,166.2 L144,162.8 L168,159.8 L192,157.4 L216,155.8 L240,155.2 L264,155.6 L288,157.1 L312,159.7 L336,163.2 L360,167.7 L384,172.9 L408,178.6 L432,184.7 L456,190.8 L480,196.8 L504,202.5 L528,207.5 L552,211.9 L576,215.5 L600,218.1 L624,219.9 L648,220.8 L672,220.9 L696,220.3 L720,219.3 L744,217.9 L768,216.4 L792,214.9 L816,213.6 L840,212.6 L864,212.0 L888,211.8 L912,212.0 L936,212.6 L960,213.5 L984,214.5 L1008,215.5 L1032,216.3 L1056,216.8 L1080,216.7 L1104,216.0 L1128,214.6 L1152,212.3 L1176,209.2 L1200,205.2 L1224,200.6 L1248,195.3 L1272,189.6 L1296,183.7 L1320,177.8 L1344,172.1 L1368,166.8 L1392,162.3 L1416,158.5 L1440,155.8"/><path data-px="14" fill="none" stroke="rgba(20,60,30,.2)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,197.2 L24,194.4 L48,191.1 L72,187.6 L96,183.9 L120,180.2 L144,176.8 L168,173.8 L192,171.4 L216,169.8 L240,169.2 L264,169.6 L288,171.1 L312,173.7 L336,177.2 L360,181.7 L384,186.9 L408,192.6 L432,198.7 L456,204.8 L480,210.8 L504,216.5 L528,221.5 L552,225.9 L576,229.5 L600,232.1 L624,233.9 L648,234.8 L672,234.9 L696,234.3 L720,233.3 L744,231.9 L768,230.4 L792,228.9 L816,227.6 L840,226.6 L864,226.0 L888,225.8 L912,226.0 L936,226.6 L960,227.5 L984,228.5 L1008,229.5 L1032,230.3 L1056,230.8 L1080,230.7 L1104,230.0 L1128,228.6 L1152,226.3 L1176,223.2 L1200,219.2 L1224,214.6 L1248,209.3 L1272,203.6 L1296,197.7 L1320,191.8 L1344,186.1 L1368,180.8 L1392,176.3 L1416,172.5 L1440,169.8"/><path data-px="14" fill="none" stroke="rgba(20,60,30,.2)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,211.2 L24,208.4 L48,205.1 L72,201.6 L96,197.9 L120,194.2 L144,190.8 L168,187.8 L192,185.4 L216,183.8 L240,183.2 L264,183.6 L288,185.1 L312,187.7 L336,191.2 L360,195.7 L384,200.9 L408,206.6 L432,212.7 L456,218.8 L480,224.8 L504,230.5 L528,235.5 L552,239.9 L576,243.5 L600,246.1 L624,247.9 L648,248.8 L672,248.9 L696,248.3 L720,247.3 L744,245.9 L768,244.4 L792,242.9 L816,241.6 L840,240.6 L864,240.0 L888,239.8 L912,240.0 L936,240.6 L960,241.5 L984,242.5 L1008,243.5 L1032,244.3 L1056,244.8 L1080,244.7 L1104,244.0 L1128,242.6 L1152,240.3 L1176,237.2 L1200,233.2 L1224,228.6 L1248,223.3 L1272,217.6 L1296,211.7 L1320,205.8 L1344,200.1 L1368,194.8 L1392,190.3 L1416,186.5 L1440,183.8"/><path data-px="14" fill="#F4E8C4" d="M610,470 C650,360 830,318 806,262 C790,222 676,212 700,178 C716,156 762,148 772,134 L781,135 C776,152 734,162 722,182 C704,214 838,222 858,268 C884,330 770,372 880,470 Z"/><path fill="#2F6E37" d="M0,301 L0,233.3 L15,234.3 L30,235.6 L45,237.0 L60,238.7 L75,240.5 L90,242.4 L105,244.5 L120,246.8 L135,249.1 L150,251.6 L165,254.1 L180,256.7 L195,259.3 L210,261.9 L225,264.4 L240,267.0 L255,269.5 L270,271.9 L285,274.2 L300,276.4 L315,278.4 L330,280.3 L345,282.1 L360,283.6 L375,285.0 L390,286.2 L405,287.2 L420,288.0 L435,288.7 L450,289.1 L465,289.4 L480,289.4 L495,289.4 L510,289.1 L525,288.7 L540,288.2 L555,287.6 L570,286.9 L585,286.1 L600,285.3 L615,284.4 L630,283.5 L645,282.6 L660,281.7 L675,280.8 L690,279.9 L705,279.1 L720,278.4 L735,277.7 L750,277.1 L765,276.6 L780,276.2 L795,275.9 L810,275.6 L825,275.4 L840,275.4 L855,275.3 L870,275.4 L885,275.5 L900,275.7 L915,275.8 L930,276.0 L945,276.2 L960,276.4 L975,276.6 L990,276.7 L1005,276.7 L1020,276.7 L1035,276.5 L1050,276.3 L1065,276.0 L1080,275.5 L1095,274.9 L1110,274.1 L1125,273.2 L1140,272.2 L1155,271.0 L1170,269.6 L1185,268.1 L1200,266.5 L1215,264.7 L1230,262.9 L1245,260.9 L1260,258.8 L1275,256.6 L1290,254.4 L1305,252.1 L1320,249.8 L1335,247.5 L1350,245.2 L1365,242.9 L1380,240.8 L1395,238.6 L1410,236.6 L1425,234.8 L1440,233.0 L1440,301 Z"/><path fill="none" stroke="rgba(255,248,220,.22)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,248.3 L24,250.0 L48,252.3 L72,255.1 L96,258.3 L120,261.8 L144,265.6 L168,269.6 L192,273.7 L216,277.9 L240,282.0 L264,285.9 L288,289.6 L312,293.0 L336,296.0 L360,298.6 L384,300.8 L408,302.4 L432,303.6 L456,304.2 L480,304.4 L504,304.2 L528,303.7 L552,302.8 L576,301.6 L600,300.3 L624,298.9 L648,297.4 L672,295.9 L696,294.6 L720,293.4 L744,292.3 L768,291.5 L792,290.9 L816,290.5 L840,290.4 L864,290.4 L888,290.5 L912,290.8 L936,291.1 L960,291.4 L984,291.6 L1008,291.7 L1032,291.6 L1056,291.2 L1080,290.5 L1104,289.5 L1128,288.0 L1152,286.2 L1176,284.1 L1200,281.5 L1224,278.6 L1248,275.4 L1272,272.0 L1296,268.4 L1320,264.8 L1344,261.1 L1368,257.5 L1392,254.1 L1416,250.9 L1440,248.0"/><path fill="none" stroke="rgba(255,248,220,.22)" stroke-width="1.3" vector-effect="non-scaling-stroke" d="M0,263.3 L24,265.0 L48,267.3 L72,270.1 L96,273.3 L120,276.8 L144,280.6 L168,284.6 L192,288.7 L216,292.9 L240,297.0 L264,300.9 L288,304.6 L312,308.0 L336,311.0 L360,313.6 L384,315.8 L408,317.4 L432,318.6 L456,319.2 L480,319.4 L504,319.2 L528,318.7 L552,317.8 L576,316.6 L600,315.3 L624,313.9 L648,312.4 L672,310.9 L696,309.6 L720,308.4 L744,307.3 L768,306.5 L792,305.9 L816,305.5 L840,305.4 L864,305.4 L888,305.5 L912,305.8 L936,306.1 L960,306.4 L984,306.6 L1008,306.7 L1032,306.6 L1056,306.2 L1080,305.5 L1104,304.5 L1128,303.0 L1152,301.2 L1176,299.1 L1200,296.5 L1224,293.6 L1248,290.4 L1272,287.0 L1296,283.4 L1320,279.8 L1344,276.1 L1368,272.5 L1392,269.1 L1416,265.9 L1440,263.0"/></svg>
     <div class="split">
       <div data-rv class="head">
-        <span class="kicker"><b>04</b>셀러</span>
+        <span class="kicker"><b>05</b>셀러</span>
         <h2 class="h2">어떤 방식으로 파시든<br><span class="soft">맞춰서 공급합니다.</span></h2>
         <p class="lead">판매 방식에 맞춰 공급 조건을 함께 상의합니다.</p>
         <div><a href="#contact" class="pill">공급 조건 문의 <i aria-hidden="true">→</i></a></div>
@@ -380,13 +513,17 @@ html.lenis,html.lenis body{height:auto}
         <a href="#contact" class="row" data-rv><span class="n">05</span><h3>밴드사</h3><span class="arr" aria-hidden="true">→</span><p>밴드로 공동구매를 운영하는 곳</p></a>
       </div>
     </div>
+    <svg class="edge dn low" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path data-px="22" fill="#F8EFD9" opacity=".8" d="M0,58 C300,98 600,34 900,68 C1150,96 1320,44 1440,66 L1440,200 L0,200Z"/>
+      <path fill="#F4F2EA" d="M0,90 C260,113 520,60 820,85 C1080,105 1280,64 1440,93 L1440,121 L0,121Z"/>
+    </svg>
   </section>
 
   <!-- 05 CONTACT -->
   <section class="contact gut" id="contact">
     <div class="sunrays" aria-hidden="true"></div>
     <div class="sunup" aria-hidden="true"></div>
-    <span class="kicker" style="position:relative"><b>05</b>거래 문의</span>
+    <span class="kicker" style="position:relative"><b>06</b>거래 문의</span>
     <h2 class="c-title" data-rv>함께,<br><span class="soft">키워갑니다.</span></h2>
     <div class="c-grid" data-rv>
       <div>
@@ -399,10 +536,17 @@ html.lenis,html.lenis body{height:auto}
         <div><span class="k">Instagram</span><a href="https://www.instagram.com/hhfb0910/" target="_blank" rel="noopener">@hhfb0910</a></div>
       </div>
     </div>
+    <div class="ground">
+    <svg viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="#A8C4C0" opacity=".85" d="M0,70 C180,20 330,40 520,96 C640,128 800,128 920,92 C1100,36 1280,30 1440,64 L1440,151 L0,151Z"/>
+      <path fill="#6F9E88" d="M0,104 C200,58 380,84 560,120 C700,142 780,140 900,118 C1080,80 1260,70 1440,100 L1440,151 L0,151Z"/>
+      <path fill="#0F3D2E" d="M0,128 C240,100 420,124 620,138 C760,146 860,144 980,134 C1160,116 1300,112 1440,126 L1440,151 L0,151Z"/>
+    </svg>
     <footer class="foot">
       <span>상호 HH F&amp;B · 사업자등록번호 127-86-63959<br>사업장 소재지 경상북도 울진군 북면 울진북로 1693-8 · TEL 010-2265-8811 · hhfb0910@naver.com</span>
       <span>© 2026 HH F&amp;B. All rights reserved.</span>
     </footer>
+    </div>
   </section>
 </main>
 
@@ -416,6 +560,7 @@ f.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)re
   var k=b.getAttribute('data-k'),shown=0;
   [].forEach.call(g.children,function(c){c.hidden=!!k&&c.getAttribute('data-k')!==k;if(c.hidden)return;
     c.classList.add('in');c.style.animation='none';void c.offsetWidth;c.style.animation='pop .7s cubic-bezier(.2,.7,.2,1) '+(shown*.045).toFixed(2)+'s both';shown++});
+  var m=document.getElementById('more'),ms=0;[].forEach.call(m.querySelectorAll('.chip'),function(c){c.hidden=!!k&&c.getAttribute('data-k')!==k;if(!c.hidden){ms++;shown++}});m.hidden=!ms;
   document.getElementById('count').textContent=(k?k+'물':'전체')+' 품목 '+shown+'개';
 });
 })();
@@ -440,12 +585,19 @@ if(!reduce&&'IntersectionObserver' in window){
   items.forEach(function(el){if(!el.classList.contains('in'))io.observe(el)});
 }
 // gentle parallax on the category photos
-var phs=[].slice.call(document.querySelectorAll('.cat .ph img,.cat .ph video'));
+var phs=[].slice.call(document.querySelectorAll('.land .media video'));
+var eds=[].slice.call(document.querySelectorAll('.edge path[data-px]'));
+var trs=[].slice.call(document.querySelectorAll('#trail a')),tsec=trs.map(function(a){return document.getElementById(a.getAttribute('data-s'))}),ton=-1;
 window.__scrollFx=function(){
   var sv=scrollY>stage.offsetHeight-innerHeight*.6;if(sv!==solid){solid=sv;nav.classList.toggle('solid',sv)}
+  var tn=0;for(var j=0;j<tsec.length;j++){if(tsec[j].getBoundingClientRect().top<innerHeight*.5)tn=j}
+  if(tn!==ton){ton=tn;trs.forEach(function(a,q){a.classList.toggle('on',q===tn)})}
   if(reduce)return;
   for(var i=0;i<phs.length;i++){var r=phs[i].parentNode.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)continue;
     var k=(r.top+r.height/2-innerHeight/2)/innerHeight;phs[i].style.transform='translate3d(0,'+(k*-28).toFixed(1)+'px,0) scale(1.12)';}
+  // back curves rise a little as the edge travels up the screen
+  for(i=0;i<eds.length;i++){var er=eds[i].ownerSVGElement.getBoundingClientRect();if(er.bottom<-40||er.top>innerHeight+40)continue;
+    var ek=Math.max(0,Math.min(1.2,(er.top+er.height/2)/innerHeight+.1));eds[i].style.transform='translateY('+(ek*+eds[i].getAttribute('data-px')).toFixed(1)+'px)';}
 };
 window.__scrollFx();
 })();
