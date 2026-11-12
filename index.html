@@ -84,12 +84,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (max-width:860px){.nav-r a:not(.pill){display:none}}
 
 /* hero */
-.stage{position:relative;height:300vh}
+.stage{position:relative;height:300vh;height:calc(var(--vh,calc(var(--vh,1vh)*1))*300)}
 .stage-in{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+html.frz .stage-in{height:calc(var(--vh)*100)}
 #sky{position:absolute;inset:0;background:linear-gradient(180deg,#B9D6E0 0%,#D5E5E4 30%,#F3E7CF calc(var(--hz,64%) - 6%),#F9D9A6 var(--hz,64%),#F3E7CF 100%)}
 #dawn{position:absolute;inset:0;opacity:0;will-change:opacity;background:linear-gradient(180deg,#A6D3EC 0%,#D6ECEE 26%,#FFF1CF 52%,#FFDB9C 76%,#FFE9C4 100%)}
 #land,#field{position:absolute;inset:0;width:100%;height:100%;display:block}
-.hero-copy{will-change:opacity,transform;position:absolute;left:0;right:0;top:clamp(96px,12.5vh,124px);z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.hero-copy{will-change:opacity,transform;position:absolute;left:0;right:0;top:clamp(96px,calc(var(--vh,1vh)*12.5),124px);z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center;pointer-events:none}
 .badge{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--forest);background:rgba(255,255,255,.78);border:1px solid rgba(15,61,46,.12);border-radius:999px;padding:7px 16px 7px 12px;margin-bottom:20px}
 .badge i{width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 4px rgba(242,163,58,.25)}
 .h1{font-family:var(--display);font-weight:600;font-size:clamp(38px,5vw,84px);line-height:1.12;letter-spacing:-.045em;color:var(--forest);text-wrap:balance}
@@ -114,8 +115,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (max-width:860px){.hero-copy{top:100px}}
 
 /* chapter shell */
-.chap{position:relative;padding-top:clamp(100px,14vh,170px);padding-bottom:clamp(100px,14vh,170px)}
-.head{display:flex;flex-direction:column;gap:20px;margin-bottom:clamp(48px,7vh,80px);max-width:880px}
+.chap{position:relative;padding-top:clamp(100px,calc(var(--vh,1vh)*14),170px);padding-bottom:clamp(100px,calc(var(--vh,1vh)*14),170px)}
+.head{display:flex;flex-direction:column;gap:20px;margin-bottom:clamp(48px,calc(var(--vh,1vh)*7),80px);max-width:880px}
 .head.center{align-items:center;text-align:center;margin-left:auto;margin-right:auto}
 
 /* soft layered edges between chapters (same cut-paper curves as the hero ridges) */
@@ -125,9 +126,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .edge.up{bottom:calc(100% - 1px)}
 .edge.dn{bottom:-1px}
 .edge path{will-change:transform}
-#collection{padding-bottom:clamp(170px,24vh,290px)}
+#collection{padding-bottom:clamp(170px,calc(var(--vh,1vh)*24),290px)}
 #flow{padding-bottom:clamp(250px,31vw,440px)}
-#sellers{padding-bottom:clamp(160px,22vh,270px)}
+#sellers{padding-bottom:clamp(160px,calc(var(--vh,1vh)*22),270px)}
 
 /* the trail: a small sun marks where you are on the way down */
 .trail{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:15px;align-items:flex-end}
@@ -150,7 +151,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .about .head{margin-bottom:0}
 .about-body p{color:var(--dim);font-size:16.5px;line-height:1.95;margin-top:18px}
 .about-body p.big{font-family:var(--display);font-weight:500;font-size:clamp(21px,1.9vw,28px);line-height:1.62;letter-spacing:-.025em;color:var(--ink);margin-top:0}
-.pillars{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(56px,8vh,96px);border-top:2px solid var(--forest)}
+.pillars{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(56px,calc(var(--vh,1vh)*8),96px);border-top:2px solid var(--forest)}
 .pillars li{padding:30px 28px 4px 0;display:flex;gap:18px;align-items:flex-start}
 .pillars li+li{padding-left:28px;border-left:1px solid var(--faint)}
 .pillars .ic{flex:none;width:58px;height:58px;border-radius:50%;background:var(--c);display:grid;place-items:center}
@@ -279,7 +280,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (max-width:860px){.split{grid-template-columns:1fr}.split .head{position:static;margin-bottom:24px}}
 
 /* 05 contact */
-.contact{position:relative;overflow:hidden;padding-top:clamp(110px,15vh,170px);background:linear-gradient(180deg,var(--bg) 0%,#F6E6C8 75%,#F7D9A5 100%)}
+.contact{position:relative;overflow:hidden;padding-top:clamp(110px,calc(var(--vh,1vh)*15),170px);background:linear-gradient(180deg,var(--bg) 0%,#F6E6C8 75%,#F7D9A5 100%)}
 .contact{--gh:150px}
 @media (max-width:860px){.contact{--gh:230px}}
 .contact .sunup{position:absolute;left:50%;bottom:calc(-31vw + var(--gh));width:62vw;height:62vw;transform:translateX(-50%);border-radius:50%;pointer-events:none;
@@ -290,7 +291,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @keyframes spin{to{transform:rotate(360deg)}}
 .c-title{font-family:var(--display);font-weight:700;font-size:clamp(56px,9.5vw,160px);line-height:1.04;letter-spacing:-.055em;color:var(--forest);margin:22px 0 48px;position:relative}
 .c-title .soft{font-weight:300;color:var(--ink)}
-.c-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;padding-bottom:clamp(80px,13vh,140px)}
+.c-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;padding-bottom:clamp(80px,calc(var(--vh,1vh)*13),140px)}
 .c-list{display:flex;flex-direction:column;background:rgba(255,255,255,.62);border-radius:20px;padding:8px 26px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.7)}
 .c-list div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--faint);align-items:baseline}
 .c-list div:last-child{border-bottom:0}
@@ -323,6 +324,12 @@ html.lenis,html.lenis body{height:auto}
 </script>
 </head>
 <body>
+<script>
+(function(){if(!/KAKAOTALK|Instagram|FBAN|FBAV|Line\//i.test(navigator.userAgent))return;
+var d=document.documentElement,w=innerWidth,H=0;d.classList.add('frz');
+function set(){if(innerWidth!==w){w=innerWidth;H=0}if(innerHeight>H+1){H=innerHeight;d.style.setProperty('--vh',(H/100)+'px')}}
+set();addEventListener('resize',set);})();
+</script>
 <a href="#about" class="skip">본문으로 건너뛰기</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="hh" viewBox="0 0 400 400">
@@ -825,7 +832,7 @@ var lastA=0;
 function size(force){
   var w=land.clientWidth,h=land.clientHeight,as=w/h;setGeo(w<860);
   // the working height only changes with the width or a real rotation, never with the address bar
-  if(force||!VH||Math.abs(h-VH)/VH>.2){VH=h;window.__VH=VH}
+  if(force||!VH||Math.abs(h-VH)>1){VH=h;window.__VH=VH}
   if(Math.round(w*ldpr)!==W||Math.round(h*ldpr)!==H)sizeLand();
   if(gl){var cw=Math.round(w*dpr),ch=Math.round(h*dpr);if(cv.width!==cw||cv.height!==ch){cv.width=cw;cv.height=ch;gl.viewport(0,0,cw,ch)}
     if(!lastA||Math.abs(as-lastA)/lastA>(force?.05:.2)||!N){lastA=as;var d=build(as);N=d.length/9;
