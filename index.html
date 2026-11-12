@@ -202,6 +202,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .card .im{position:relative;overflow:hidden;aspect-ratio:1;width:100%;border-radius:50%;background:#0B2E22}
 .card .ring{position:relative;width:88%;border-radius:50%;padding:5px;box-shadow:inset 0 0 0 2px var(--c)}
 @media (min-width:901px){.grid>.card:nth-child(even){margin-top:40px}}
+.grid.feat{gap:64px clamp(24px,4vw,64px);margin-top:10px}
+.grid.feat>.card{width:calc((100% - 2*clamp(24px,4vw,64px))/3);max-width:330px;gap:22px}
+.grid.feat .ring{width:100%;padding:7px;box-shadow:inset 0 0 0 2.5px var(--c)}
+.grid.feat .card h3{font-size:clamp(24px,2.3vw,34px);margin-top:6px}
+.grid.feat .lab{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500;color:rgba(244,242,234,.7)}
+.grid.feat .lab i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+@media (min-width:901px){.grid.feat>.card:nth-child(even){margin-top:0}.grid.feat>.card:nth-child(3n+2){margin-top:56px}}
+@media (max-width:900px){.grid.feat{gap:40px 18px}.grid.feat>.card{width:calc((100% - 18px)/2);gap:14px}}
+.also{margin:64px auto 0;max-width:46em;text-align:center;color:rgba(244,242,234,.78);font-size:16px;line-height:1.95;text-wrap:balance}
+.also span{display:block;font-size:13.5px;color:rgba(244,242,234,.55);margin-bottom:4px}
 .card .im img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .card:hover .im img{transform:scale(1.07)}
 .card .im::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(244,242,234,.14);pointer-events:none}
@@ -215,7 +225,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .more .lab{flex-basis:100%;text-align:center;font-size:14.5px;color:rgba(244,242,234,.62);margin-bottom:6px}
 .more .chip{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:500;font-size:17px;letter-spacing:-.02em;padding:9px 20px;border-radius:999px;border:1px solid rgba(244,242,234,.26)}
 .more .chip i{width:8px;height:8px;border-radius:50%;background:var(--c)}
-.note{margin-top:40px;text-align:center;color:rgba(244,242,234,.7);font-size:15px}
+.note{margin-top:22px;text-align:center;color:rgba(244,242,234,.7);font-size:15px}
 
 /* 03 flow: big numbered steps */
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;list-style:none;counter-reset:s}
@@ -332,7 +342,7 @@ html.lenis,html.lenis body{height:auto}
   <nav class="nav-r" aria-label="주요 메뉴">
     <a href="#about">회사 소개</a>
     <a href="#categories">취급 분야</a>
-    <a href="#collection">품목</a>
+    <a href="#collection">대표 상품</a>
     <a href="#flow">출고 방식</a>
     <a href="#sellers">셀러</a>
     <a href="#contact" class="pill">거래 문의 <i aria-hidden="true">→</i></a>
@@ -343,7 +353,7 @@ html.lenis,html.lenis body{height:auto}
   <a href="#top" data-s="stage"><span>해돋이</span><i></i></a>
   <a href="#about" data-s="about"><span>회사 소개</span><i></i></a>
   <a href="#categories" data-s="categories"><span>바다 · 들 · 산자락</span><i></i></a>
-  <a href="#collection" data-s="collection"><span>품목</span><i></i></a>
+  <a href="#collection" data-s="collection"><span>대표 상품</span><i></i></a>
   <a href="#flow" data-s="flow"><span>출고 방식</span><i></i></a>
   <a href="#sellers" data-s="sellers"><span>셀러</span><i></i></a>
   <a href="#contact" data-s="contact"><span>거래 문의</span><i></i></a>
@@ -364,7 +374,7 @@ html.lenis,html.lenis body{height:auto}
         <p class="hero-p">동해의 홍게부터 햇볕에 말린 과메기, 등갈비와 표고버섯까지. 여러 산지를 한 번의 발주로 묶어 산지에서 고객에게 바로 출고합니다.</p>
         <div class="hero-btns">
           <a href="#contact" class="pill">거래 문의하기 <i aria-hidden="true">→</i></a>
-          <a href="#collection" class="pill ghost">품목 보기 <i aria-hidden="true">↓</i></a>
+          <a href="#collection" class="pill ghost">대표 상품 보기 <i aria-hidden="true">↓</i></a>
         </div>
       </div>
 
@@ -451,25 +461,18 @@ html.lenis,html.lenis body{height:auto}
       <path fill="#0F3D2E" d="M0,98 C260,62 460,119 760,93 C1020,71 1240,113 1440,85 L1440,121 L0,121Z"/>
     </svg>
     <div data-rv class="head center">
-      <span class="kicker"><b>03</b>품목</span>
-      <h2 class="h2">지금 셀러분들께<br><span class="soft">공급하는 품목</span></h2>
-      <div class="filters" role="group" aria-label="품목 분류" id="filters"><button type="button" id="f0" aria-pressed="true" data-k="">전체 <small>19</small></button><button type="button" id="f1" aria-pressed="false" data-k="수산" style="--c:var(--sea)"><i></i>수산물 <small>10</small></button><button type="button" id="f2" aria-pressed="false" data-k="농산" style="--c:var(--leaf)"><i></i>농산물 <small>7</small></button><button type="button" id="f3" aria-pressed="false" data-k="축산" style="--c:var(--ember)"><i></i>축산물 <small>2</small></button></div>
+      <span class="kicker"><b>03</b>대표 상품</span>
+      <h2 class="h2">지금 이 계절의<br><span class="soft">대표 상품</span></h2>
     </div>
-    <p class="sr" aria-live="polite" id="count"></p>
-    <div class="grid" id="grid">
-      <article class="card" data-rv style="--d:0.00s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-hongge.jpg?v=2" alt="홍게 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>홍게</h3><span class="en">Red Snow Crab</span></div></article>
-      <article class="card" data-rv style="--d:0.06s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-daege.jpg?v=3" alt="국산 대게 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>국산대게</h3><span class="en">Korean Snow Crab</span></div></article>
-      <article class="card" data-rv style="--d:0.12s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-lobster.jpg?v=3" alt="랍스터 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>랍스터</h3><span class="en">Lobster</span></div></article>
-      <article class="card" data-rv style="--d:0.18s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-heukgodong.jpg?v=2" alt="흑고동 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>흑고동</h3><span class="en">Black Whelk</span></div></article>
-      <article class="card" data-rv style="--d:0.24s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-gwamegi.jpg?v=3" alt="과메기 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>과메기</h3><span class="en">Gwamegi</span></div></article>
-      <article class="card" data-rv style="--d:0.30s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-pidegi.jpg" alt="피데기 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>피데기</h3><span class="en">Half-dried Squid</span></div></article>
-      <article class="card" data-rv style="--d:0.00s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-gulbi.jpg?v=3" alt="굴비 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>굴비</h3><span class="en">Yellow Croaker</span></div></article>
-      <article class="card" data-rv style="--d:0.06s;--c:var(--sea)" data-k="수산"><div class="ring"><div class="im"><img src="img/p-bakdae.jpg" alt="박대 (수산물)" loading="lazy" width="400" height="500"><em>수산물</em></div></div><div><h3>박대</h3><span class="en">Tonguefish</span></div></article>
-      <article class="card" data-rv style="--d:0.12s;--c:var(--leaf)" data-k="농산"><div class="ring"><div class="im"><img src="img/p-pyogo.jpg?v=2" alt="표고버섯 (농산물)" loading="lazy" width="400" height="500"><em>농산물</em></div></div><div><h3>표고버섯</h3><span class="en">Shiitake</span></div></article>
-      <article class="card" data-rv style="--d:0.18s;--c:var(--ember)" data-k="축산"><div class="ring"><div class="im"><img src="img/p-ribs.jpg?v=2" alt="등갈비 (축산물)" loading="lazy" width="400" height="500"><em>축산물</em></div></div><div><h3>등갈비</h3><span class="en">Pork Back Ribs</span></div></article>
-      <article class="card" data-rv style="--d:0.24s;--c:var(--ember)" data-k="축산"><div class="ring"><div class="im"><img src="img/p-lagalbi.jpg?v=3" alt="LA갈비 (축산물)" loading="lazy" width="400" height="500"><em>축산물</em></div></div><div><h3>LA갈비</h3><span class="en">LA-style Short Ribs</span></div></article>
+    <div class="grid feat" id="grid">
+      <article class="card" data-rv style="--d:0s;--c:var(--sea)"><div class="ring"><div class="im"><img src="img/p-hongge.jpg?v=2" alt="홍게" loading="lazy" width="400" height="400"></div></div><div><span class="lab"><i></i>수산물</span><h3>홍게</h3><span class="en">Red Snow Crab</span></div></article>
+      <article class="card" data-rv style="--d:.08s;--c:var(--leaf)"><div class="ring"><div class="im"><img src="img/p-apple.jpg" alt="사과" loading="lazy" width="400" height="400"></div></div><div><span class="lab"><i></i>농산물</span><h3>사과</h3><span class="en">Apple</span></div></article>
+      <article class="card" data-rv style="--d:.16s;--c:var(--ember)"><div class="ring"><div class="im"><img src="img/p-ribs.jpg?v=2" alt="등갈비" loading="lazy" width="400" height="400"></div></div><div><span class="lab"><i></i>축산물</span><h3>등갈비</h3><span class="en">Pork Back Ribs</span></div></article>
+      <article class="card" data-rv style="--d:0s;--c:var(--sea)"><div class="ring"><div class="im"><img src="img/p-gwamegi.jpg?v=3" alt="과메기" loading="lazy" width="400" height="400"></div></div><div><span class="lab"><i></i>수산물</span><h3>과메기</h3><span class="en">Gwamegi</span></div></article>
+      <article class="card" data-rv style="--d:.08s;--c:var(--leaf)"><div class="ring"><div class="im"><img src="img/p-tangerine.jpg" alt="감귤" loading="lazy" width="400" height="400"></div></div><div><span class="lab"><i></i>농산물</span><h3>감귤</h3><span class="en">Tangerine</span></div></article>
+      <article class="card" data-rv style="--d:.16s;--c:var(--ember)"><div class="ring"><div class="im"><img src="img/p-lagalbi.jpg?v=3" alt="LA갈비" loading="lazy" width="400" height="400"></div></div><div><span class="lab"><i></i>축산물</span><h3>LA갈비</h3><span class="en">LA-style Short Ribs</span></div></article>
     </div>
-    <div class="more" id="more" data-rv><span class="lab">이 밖에도</span><span class="chip" data-k="수산" style="--c:var(--sea)"><i></i>가자미</span><span class="chip" data-k="수산" style="--c:var(--sea)"><i></i>미주구리회</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>감자</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>고구마</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>사과</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>감귤</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>토마토</span><span class="chip" data-k="농산" style="--c:var(--leaf)"><i></i>복숭아</span></div>
+    <p class="also" data-rv><span>이 밖에도</span>국산대게 · 랍스터 · 흑고동 · 피데기 · 굴비 · 박대 · 가자미 · 미주구리회 · 표고버섯 · 감자 · 고구마 · 토마토 · 복숭아를 공급합니다.</p>
     <p class="note" data-rv>품목은 철에 따라 달라집니다. 찾으시는 품목이 있으면 편하게 물어봐 주세요.</p>
     <svg class="edge dn" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
       <path data-px="26" fill="#1D5C45" d="M0,44 C280,92 520,16 800,54 C1080,92 1260,28 1440,66 L1440,200 L0,200Z"/>
@@ -552,19 +555,6 @@ html.lenis,html.lenis body{height:auto}
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
-/* ---------- collection filter ---------- */
-(function(){
-var g=document.getElementById('grid'),f=document.getElementById('filters');
-f.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
-  [].forEach.call(f.children,function(x){x.setAttribute('aria-pressed',x===b)});
-  var k=b.getAttribute('data-k'),shown=0;
-  [].forEach.call(g.children,function(c){c.hidden=!!k&&c.getAttribute('data-k')!==k;if(c.hidden)return;
-    c.classList.add('in');c.style.animation='none';void c.offsetWidth;c.style.animation='pop .7s cubic-bezier(.2,.7,.2,1) '+(shown*.045).toFixed(2)+'s both';shown++});
-  var m=document.getElementById('more'),ms=0;[].forEach.call(m.querySelectorAll('.chip'),function(c){c.hidden=!!k&&c.getAttribute('data-k')!==k;if(!c.hidden){ms++;shown++}});m.hidden=!ms;
-  document.getElementById('count').textContent=(k?k+'물':'전체')+' 품목 '+shown+'개';
-});
-})();
-
 /* ---------- smooth scroll, reveals, nav ---------- */
 (function(){
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,root=document.documentElement;
