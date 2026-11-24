@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /o/
 
 Sitemap: https://hhfb.co.kr/sitemap.xml

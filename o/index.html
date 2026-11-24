@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>HH F&amp;B 셀러 전용 발주</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="HH F&amp;B 셀러 전용 발주 페이지">
+<meta property="og:description" content="엑셀 그대로 발주 · 송장 확인 · 정산서까지 한 곳에서 (오후 1시 마감)">
+<meta property="og:image" content="https://hhfb.co.kr/img/og-2026-11.jpg">
+<link rel="icon" href="/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<script>
+// 셀러 링크: hhfb.co.kr/o/?코드  →  HH 발주허브(구글 앱스 스크립트) 셀러 페이지로 바로 이동
+// 셀러 코드는 이 파일에 적지 않음 (저장소가 공개라서). 코드는 셀러가 받은 링크에만 있음.
+(function () {
+  var HUB = 'https://script.google.com/macros/s/AKfycbwdp3TfmvzuSU2t0u4TyYqxcqoPPWtXdke4YuUSwmSpM0vNL5Lu9Msc_8KhkKlYC2EF/exec';
+  var q = location.search.replace(/^\?/, ''), h = location.hash.replace(/^#/, '');
+  var m = (q + '&' + h).match(/(?:^|[&=])([0-9a-f]{8,20})(?:&|$)/i);
+  window.__code = m ? m[1].toLowerCase() : '';
+  if (window.__code) location.replace(HUB + '?s=' + window.__code);
+})();
+</script>
+<style>
+  html,body{margin:0;height:100%}
+  body{font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;background:#F4F2EA;color:#1A1A1A;display:flex;align-items:center;justify-content:center;text-align:center;word-break:keep-all}
+  .box{padding:32px 24px;max-width:360px}
+  .logo{width:72px;height:72px;margin:0 auto 18px}
+  .logo svg{width:100%;height:100%;display:block}
+  h1{font-size:20px;color:#0F3D2E;margin:0 0 8px;letter-spacing:-0.02em}
+  p{margin:0;color:#5E655F;font-size:15px;line-height:1.6}
+  a.btn{display:inline-block;margin-top:20px;background:#0F3D2E;color:#F4F2EA;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:12px}
+  .dots i{display:inline-block;width:6px;height:6px;margin:14px 3px 0;border-radius:50%;background:#0F3D2E;opacity:.25;animation:b 1s infinite}
+  .dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+  @keyframes b{50%{opacity:1}}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="logo"><svg viewBox="0 0 400 400" aria-label="HH F&amp;B" role="img"><circle cx="200" cy="200" r="190" fill="#FFFFFF"/><circle cx="200" cy="200" r="185" fill="#0F3D2E"/><circle cx="200" cy="200" r="155.40" fill="#F6F3EA"/><path d="M167.2772 244.4V158.93H191.453V244.4ZM110.13439999999999 244.4V158.93H134.3102V244.4ZM132.6008 211.0667V191.0423H168.9866V211.0667ZM265.6898 244.4V158.93H289.86560000000003V244.4ZM208.547 244.4V158.93H232.7228V244.4ZM231.0134 211.0667V191.0423H267.3992V211.0667Z" fill="#0F3D2E"/><path d="M200.00,161.37 C162.64,142.69 175.09,101.18 222.83,103.25 C231.14,134.39 214.53,157.22 200.00,161.37Z" fill="#7CC242"/><path d="M200.00,161.37 Q204.15,138.54 218.68,113.63" fill="none" stroke="#F6F3EA" stroke-width="3.53" stroke-linecap="round"/><rect x="141.03" y="266.60" width="34.69" height="9.71" rx="4.86" fill="#7CC242"/><rect x="182.66" y="266.60" width="34.69" height="9.71" rx="4.86" fill="#1F72B8"/><rect x="224.28" y="266.60" width="34.69" height="9.71" rx="4.86" fill="#E2532D"/></svg></div>
+  <div id="go">
+    <h1>발주 페이지로 이동하고 있어요</h1>
+    <p>잠시만 기다려 주세요.</p>
+    <div class="dots"><i></i><i></i><i></i></div>
+  </div>
+  <div id="bad" hidden>
+    <h1>링크를 다시 확인해 주세요</h1>
+    <p>HH F&amp;B에서 받은 셀러 전용 링크로 들어와 주세요.<br>문의 010-2265-8811</p>
+  </div>
+</div>
+<script>
+  if (!window.__code) { document.getElementById('go').hidden = true; document.getElementById('bad').hidden = false; }
+</script>
+</body>
+</html>
